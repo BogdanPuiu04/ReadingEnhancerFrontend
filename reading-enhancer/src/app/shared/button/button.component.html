@@ -1,0 +1,16 @@
+<button class="button"
+        (click)="buttonClicked()"
+        [disabled]="disabledValue"
+        [ngClass]="{'button--primary' : buttonType === 'primary',
+                    'button--secondary': buttonType === 'secondary',
+                    'button--large': buttonSize === 'large',
+                    'button--medium': buttonSize === 'medium',
+                    'button--small': buttonSize === 'small',
+                    'button--square': buttonSize === 'square',
+                    'button--disabled' : disabledValue
+                    }"
+>
+  <i class="button_icon" *ngIf="iconPosition === 'left'" [inlineSVG]="iconLink"></i>
+  <span class="button_text">{{buttonText}}</span>
+  <i class="button_icon" *ngIf="iconPosition === 'right'" [inlineSVG]="iconLink"></i>
+</button>

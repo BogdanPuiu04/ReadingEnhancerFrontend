@@ -1,0 +1,10 @@
+<form class="form" [formGroup]='form' (ngSubmit)="onSubmit()">
+  <div class="form__input">
+      <app-input [formGroup]='form' inputType="text" label="EnhancedText" [controlName]="'enhancedText'"></app-input>
+  </div>
+  <div class="form__actions">
+    <div class="form__actions__button">
+      <app-button [disabledValue]="!form.valid" buttonText="Enhance!"  iconPosition="right" buttonSize="large"></app-button>
+    </div>
+  </div>
+</form>

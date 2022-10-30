@@ -1,0 +1,11 @@
+<div class="input" >
+  <div class="input__group" [formGroup]="inputGroupForm">
+    <label class="input__group__label">{{ label }}</label>
+    <input [formControlName]="controlName" class="input__group__input" [type]="fieldTextType ? inputType : 'text'" />
+    <div *ngIf="inputType === 'password'" class="input__group__field">
+      <i (click)="toggleFieldTextType()">
+        <div class="input__group__field__icon" [inlineSVG]="'/assets/eye.svg'"></div>
+      </i>
+    </div>
+  </div>
+</div>

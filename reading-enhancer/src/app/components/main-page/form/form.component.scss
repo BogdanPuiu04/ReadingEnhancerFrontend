@@ -1,0 +1,40 @@
+@import '../../../../assets/_variables.scss';
+.form{
+  display: flex;
+  flex-direction: column;
+  width: 85%;
+
+  &__input{
+    &__errorMessage{
+      margin-top: 10px;
+      font-size: $font-size-regular;
+      font-family: $font-family;
+      color:$orange;
+    }
+  }
+
+  &__actions{
+    margin-top: 15px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+
+    &__checkbox{
+      margin-top: 15px;
+
+      &__label{
+        padding: 0 5px;
+        color: $gray;
+      }
+    }
+
+    &__button{
+      margin-top: 15px;
+      flex-grow: 1;
+      display: flex;
+      justify-content: flex-end;
+    }
+
+  }
+}

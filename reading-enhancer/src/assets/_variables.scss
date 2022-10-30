@@ -1,0 +1,77 @@
+//colors
+$orange: #de411b;
+$gray: #48545b;
+$light-gray: #f0f3f3;
+$white: white;
+$black: black;
+$white-gray:#FAFAFA;
+$dark-gray:#253136;
+$error-rose:#FEF2F2;
+$error-red:#DC2626;
+//legends-colors
+$color-non-bookable: #EF4444;
+$color-non-bookable-dark: #B91C1C;
+$color-bookable: #10B981;
+$color-bookable-dark: #059669;
+$color-booked: #F59E0B;
+$color-booked-dark: #D97706;
+$color-partially-booked: linear-gradient($color-bookable, $color-booked);
+$color-partially-booked-dark: linear-gradient($color-bookable-dark, $color-booked-dark);
+
+
+//orange shades and tints
+$orange-tint-10: #e15432;
+$orange-tint-20: #e56749;
+$orange-tint-30: #e87a5f;
+$orange-tint-40: #eb8d76;
+$orange-tint-50: #efa08d;
+$orange-tint-60: #f2b3a4;
+$orange-tint-70: #f5c6bb;
+$orange-tint-80: #f8d9d1;
+$orange-shade-10: #c83b18;
+$orange-shade-20: #b23416;
+$orange-shade-30: #9b2e13;
+$orange-shade-40: #852710;
+$orange-shade-50: #6f210e;
+$orange-shade-60: #591a08;
+
+//gray shades and tints
+$gray-tint-10: #5a656b;
+$gray-tint-20: #6d767c;
+$gray-tint-30: #7f878c;
+$gray-tint-40: #91989d;
+$gray-tint-50: #a4aaad;
+$gray-tint-60: #b6bbbd;
+$gray-tint-70: #c8ccce;
+$gray-tint-80: #daddde;
+$gray-tint-90: #edeeef;
+$gray-shade-10: #414c52;
+$gray-shade-20: #3a4349;
+$gray-shade-30: #323b40;
+$gray-shade-40: #2b3237;
+$gray-shade-50: #242a2e;
+$gray-shade-60: #1d2224;
+
+//sizes
+$buttons-border-radius: 8px;
+
+//fonts
+$font-size-xx-small: 8px;
+$font-size-x-small: 10px;
+$font-size-small: 12px;
+$font-size-medium: 14px;
+$font-size-regular: 16px;
+$font-size-regular-large: 18px;
+$font-size-regular-x-large: 20px;
+$font-size-regular-xx-large: 22px;
+$font-size-regular-xxx-large: 24px;
+$font-size-regular-xxxx-large: 25px;
+$font-size-regular-medium-large: 32px;
+$font-size-regular-extra-large: 100px;
+
+//fonts-weight
+$font-weight-normal: 400;
+$font-weight-light-bold: 500;
+$font-weight-bold: 700;
+
+$font-family: "Roboto", sans-serif;
