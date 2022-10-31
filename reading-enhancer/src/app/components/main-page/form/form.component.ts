@@ -31,7 +31,14 @@ export class FormComponent implements OnInit {
   }
 
   enhanceText(text: string) {
-    this.textService.enhanceText(text);
+    this.textService.enhanceText(text).subscribe({
+      next: (res) => {
+        console.log("succes");
+      },
+      error : () => {
+        console.log("fail");
+      }
+    });
   }
 
   ngOnInit(): void {

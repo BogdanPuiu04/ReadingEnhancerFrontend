@@ -21,16 +21,10 @@ export class EnhancedTextService {
       'Access-Control-Allow-Headers': 'Content-Type',
       'Access-Control-Allow-Methods': '*',
     });
-    console.log(this.http.post<any>(
-      'https://gorest.co.in/public/v2/users', text, {
-        headers: headers
-      }
-    )
-      .pipe(map(obj => obj.id)
-      ))
     const content = JSON.stringify(text);
-    return this.http.get<any>(
-      'https://gorest.co.in/public/v2/users/9'
-    ).pipe(map(obj => obj.id));
+    return this.http.post<string>(
+      `${environment.baseUrl}/api/EnhancedText/request`,content,
+      {headers: headers}
+    )
   }
 }
