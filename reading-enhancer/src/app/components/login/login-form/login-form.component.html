@@ -4,6 +4,8 @@
     <app-input [formGroup]='form' inputType="password" label="Password" [controlName]="'password'"></app-input>
   </div>
   <div class="form__actions">
-    <app-button [disabledValue]="!form.valid" buttonText="Login" buttonSize="large"></app-button>
+    <div class="form__actions__button">
+    <app-button [disabledValue]="!form.valid" buttonText="Login" iconPosition="right" buttonSize="large"  ></app-button>
+    </div>
   </div>
 </form>
