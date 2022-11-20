@@ -12,6 +12,9 @@ import {InlineSVGModule} from "ng-inline-svg-2";
 import { ButtonComponent } from './shared/button/button.component';
 import {EnhancedTextService} from "./services/enhanced-text.service";
 import { HttpClientModule} from "@angular/common/http";
+import { NavMenuComponent } from './components/nav-menu/nav-menu.component';
+import { LoginComponent } from './components/login/login.component';
+import { LoginFormComponent } from './components/login/login-form/login-form.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +23,9 @@ import { HttpClientModule} from "@angular/common/http";
     FormComponent,
     InputComponent,
     ButtonComponent,
+    NavMenuComponent,
+    LoginComponent,
+    LoginFormComponent,
   ],
   imports: [
     BrowserModule,
