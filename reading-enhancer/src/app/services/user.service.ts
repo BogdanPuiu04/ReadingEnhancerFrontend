@@ -31,6 +31,7 @@ export class UserService {
     })
 
     const body = JSON.stringify(user);
+    console.log(body);
     return this.http.post<userRequestData>(
       `${environment.baseUrl}/Users/authenticate`,
       body,

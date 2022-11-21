@@ -56,12 +56,12 @@
   }
 
   &--secondary {
-    background-color: $white;
-    color: $orange;
+    background-color: $gray-tint-10;
+    color: $white-gray;
 
     ::ng-deep svg {
       path {
-        stroke: $orange;
+        stroke: $gray-tint-10;
       }
     }
 
@@ -69,7 +69,7 @@
 
   &--disabled {
     cursor: default;
-    background-color: $orange-tint-20;
+    background-color: $gray-tint-60;
     pointer-events: none;
   }
 }

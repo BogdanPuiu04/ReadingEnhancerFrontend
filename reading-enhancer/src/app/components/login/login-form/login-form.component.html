@@ -1,11 +1,15 @@
-<form class="form" [formGroup]="form" (ngSubmit)="onSubmit()">
+<form class="form" [formGroup]='form' (ngSubmit)="onSubmit()">
   <div class="form__input">
     <app-input [formGroup]="form" inputType="username" label="Username" [controlName]="'userName'"></app-input>
+    <div *ngFor="let validation of accountValidationMessages.userName">
+      <div class="form__input__errorMessage"
+        *ngIf="this.form.get('userName')?.hasError(validation.type) && (this.form.get('userName')?.dirty || this.form.get('userName')?.touched)">{{validation.message}}</div>
+    </div>
     <app-input [formGroup]='form' inputType="password" label="Password" [controlName]="'password'"></app-input>
   </div>
   <div class="form__actions">
     <div class="form__actions__button">
-    <app-button [disabledValue]="!form.valid" buttonText="Login" iconPosition="right" buttonSize="large"  ></app-button>
+    <app-button [disabledValue]="!form.valid" buttonText="Login" iconPosition="right" buttonSize="large" ></app-button>
     </div>
   </div>
 </form>

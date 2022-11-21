@@ -31,28 +31,27 @@ export class LoginFormComponent implements OnInit {
   }
 
   initForm(): void {
-    const userCredentials: UserModel = this.handlerService.getUserCredentialsFromStorage();
+    const userModel: UserModel = this.handlerService.getUserCredentialsFromStorage();
     const user: UserModel = {username: '', password: ''};
-    if (userCredentials) {
-      user.username = userCredentials.username
-      user.password = window.atob(userCredentials?.password);
+    if (userModel) {
+      user.username = userModel.username
+      user.password = window.atob(userModel?.password);
     }
     this.form = this.formBuilder.group({
       userName: new FormControl(user.username, Validators.compose([
         Validators.required,
-        Validators.pattern('[A-Za-z0-9._%+-]'),
-        Validators.minLength(4),
+        // Validators.pattern('[A-Za-z0-9._%+-]'),
+        Validators.minLength(2),
         Validators.maxLength(40)
       ])),
       password: new FormControl(user.password, [Validators.required]),
-      credentials: new FormControl(userCredentials)
+      credentials: new FormControl(userModel)
     });
   }
 
-  ngOnInit(): void {
-  }
 
   onSubmit() {
+    console.log("here")
     if (this.form.valid) {
       this.login(this.form.value.userName, this.form.value.password);
     }
@@ -66,9 +65,27 @@ export class LoginFormComponent implements OnInit {
 
     this.userService.login(user).subscribe({
       next: (res) => {
-        // if(res.succed){}
-        // const userCredentials=
+        if (res.token != null) {
+          const userCredentials: UserCredentialsModel = {
+            name: res.name,
+            token: res.token
+          };
+          localStorage.removeItem('userCredentials');
+          if (this.form.value.credentials) {
+            const userInfo: UserModel = {username, password: window.btoa(password)};
+            localStorage.setItem('userCredentials', JSON.stringify(userInfo));
+          }
+          localStorage.setItem('userInfo', JSON.stringify(userCredentials));
+          this.invalidCredentials = false;
+          this.router.navigate(['/main']);
+        } else {
+          this.invalidCredentials = true;
+        }
       }
     })
+  }
+
+  ngOnInit(): void {
+    this.initForm();
   }
 }
