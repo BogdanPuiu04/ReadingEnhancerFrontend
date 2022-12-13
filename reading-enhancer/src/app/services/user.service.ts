@@ -42,7 +42,7 @@ export class UserService {
   }
 
   logout(): void {
-    localStorage.removeItem('userCredentials');
+    localStorage.removeItem('userInfo');
     this.router.navigate(['/login']);
   }
 
