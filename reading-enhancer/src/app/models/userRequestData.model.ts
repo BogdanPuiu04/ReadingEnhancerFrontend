@@ -1,4 +1,8 @@
+import {userCredentialsModel} from "./userCredentialsModel";
+
 export interface userRequestData {
-  name: string,
-  token: string
+  isSuccessful: string,
+  statusCode: string,
+  errors: string,
+  data: userCredentialsModel
 }

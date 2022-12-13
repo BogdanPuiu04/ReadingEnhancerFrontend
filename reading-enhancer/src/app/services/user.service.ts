@@ -4,7 +4,7 @@ import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {HandlerService} from "./handler.service";
 import {UserModel} from "../models/user.model";
 import {environment} from "../../environments/environment";
-import {UserCredentialsModel} from "../models/userCredentials.model";
+import {userCredentialsModel} from "../models/userCredentialsModel";
 import {userRequestData} from "../models/userRequestData.model";
 
 @Injectable({
@@ -33,7 +33,7 @@ export class UserService {
     const body = JSON.stringify(user);
     console.log(body);
     return this.http.post<userRequestData>(
-      `${environment.baseUrl}/Users/authenticate`,
+      `${environment.baseUrl}/api/User/authenticate`,
       body,
       {
         headers,

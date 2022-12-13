@@ -10,15 +10,16 @@ export class HandlerService {
 
 
   getUserFromStorage(): any {
-    return JSON.parse(localStorage['user']).name;
+    return JSON.parse(localStorage['userInfo']);
   }
 
   getTokenFromLocalStorage(): any {
-    return JSON.parse(localStorage['userCredentials'].token)
+    const userToken = JSON.parse(localStorage['userInfo']);
+    return userToken.token;
   }
 
   checkStorageForUser(): boolean {
-    return !localStorage.getItem('user');
+    return !localStorage.getItem('userInfo');
   }
 
   getUserCredentialsFromStorage(): any {

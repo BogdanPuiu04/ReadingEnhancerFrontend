@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {HandlerService} from "../../../services/handler.service";
 import {Router} from "@angular/router";
-import {UserCredentialsModel} from "../../../models/userCredentials.model";
+import {userCredentialsModel} from "../../../models/userCredentialsModel";
 import {UserModel} from "../../../models/user.model";
 import {UserService} from "../../../services/user.service";
 
@@ -65,10 +65,10 @@ export class LoginFormComponent implements OnInit {
 
     this.userService.login(user).subscribe({
       next: (res) => {
-        if (res.token != null) {
-          const userCredentials: UserCredentialsModel = {
-            name: res.name,
-            token: res.token
+        if (res.isSuccessful) {
+          const userCredentials: userCredentialsModel = {
+            name: res.data.name,
+            token: res.data.token
           };
           localStorage.removeItem('userCredentials');
           if (this.form.value.credentials) {
@@ -81,6 +81,9 @@ export class LoginFormComponent implements OnInit {
         } else {
           this.invalidCredentials = true;
         }
+      },
+      error: () => {
+        this.invalidCredentials = true;
       }
     })
   }
