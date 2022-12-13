@@ -6,6 +6,7 @@ import {UserModel} from "../models/user.model";
 import {environment} from "../../environments/environment";
 import {userCredentialsModel} from "../models/userCredentialsModel";
 import {userRequestData} from "../models/userRequestData.model";
+import {Observable} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
@@ -31,7 +32,6 @@ export class UserService {
     })
 
     const body = JSON.stringify(user);
-    console.log(body);
     return this.http.post<userRequestData>(
       `${environment.baseUrl}/api/User/authenticate`,
       body,
@@ -46,4 +46,40 @@ export class UserService {
     this.router.navigate(['/login']);
   }
 
+  refreshToken(): Observable<any> {
+    return this.http.post(`${environment.baseUrl}/User/refresh-token`, null)
+  }
+
+  startRefreshToken(): void {
+    const jwtToken = JSON.parse(
+      window.atob(this.handlerService.getTokenFromLocalStorage().split('.')[1]));
+    const expires = new Date(jwtToken.exp * 1000);
+    const timeout = expires.getTime() - Date.now() - 60 * 1000;
+    const user: userCredentialsModel = this.handlerService.getUserFromStorage();
+
+    this.refreshTokenTimeout = setTimeout(
+      () =>
+        this.refreshToken().subscribe({
+          next: (res: userRequestData) => {
+            if (res.isSuccessful) {
+              user.token = res.data.token;
+              localStorage.setItem('userInfo', JSON.stringify(user));
+              this.stopRefreshToken();
+              this.startRefreshToken();
+            } else {
+              this.stopRefreshToken();
+              this.logout();
+            }
+          },
+          error: () => {
+            this.stopRefreshToken();
+            this.logout();
+          }
+        }), timeout
+    )
+  }
+
+  stopRefreshToken(): void {
+    clearTimeout(this.refreshTokenTimeout);
+  }
 }
