@@ -2,16 +2,18 @@ import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {HandlerService} from "../../../services/handler.service";
 import {Router} from "@angular/router";
-import {userCredentialsModel} from "../../../models/userCredentialsModel";
-import {UserModel} from "../../../models/user.model";
 import {UserService} from "../../../services/user.service";
+import {UserModel} from "../../../models/user.model";
+import {userCredentialsModel} from "../../../models/userCredentialsModel";
 
 @Component({
-  selector: 'app-login-form',
-  templateUrl: './login-form.component.html',
-  styleUrls: ['./login-form.component.scss']
+  selector: 'app-register-form',
+  templateUrl: './register-form.component.html',
+  styleUrls: ['./register-form.component.scss']
 })
-export class LoginFormComponent implements OnInit {
+export class RegisterFormComponent implements OnInit {
+
+
   form!: FormGroup
 
   invalidCredentials = false;
@@ -53,17 +55,17 @@ export class LoginFormComponent implements OnInit {
   onSubmit() {
     console.log("here")
     if (this.form.valid) {
-      this.login(this.form.value.userName, this.form.value.password);
+      this.register(this.form.value.userName, this.form.value.password);
     }
   }
 
-  login(username: string, password: string): void {
+  register(username: string, password: string): void {
     const user: UserModel = {
       username,
       password
     };
 
-    this.userService.login(user).subscribe({
+    this.userService.register(user).subscribe({
       next: (res) => {
         if (res.isSuccessful) {
           const userCredentials: userCredentialsModel = {
@@ -76,11 +78,9 @@ export class LoginFormComponent implements OnInit {
             localStorage.setItem('userCredentials', JSON.stringify(userInfo));
           }
           localStorage.setItem('userInfo', JSON.stringify(userCredentials));
-          this.userService.startRefreshToken();
           this.invalidCredentials = false;
           this.router.navigate(['/main']);
         } else {
-          this.userService.stopRefreshToken();
           this.invalidCredentials = true;
         }
       },
@@ -93,4 +93,5 @@ export class LoginFormComponent implements OnInit {
   ngOnInit(): void {
     this.initForm();
   }
+
 }

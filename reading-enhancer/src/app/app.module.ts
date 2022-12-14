@@ -19,6 +19,8 @@ import {AuthService} from "./services/login-handlers/auth.service";
 import {appInitializer} from "./shared/app-init.initializer";
 import {HandlerService} from "./services/handler.service";
 import {TokenInterceptor} from "./services/token.interceptor";
+import {RegisterComponent} from './components/register/register.component';
+import {RegisterFormComponent} from './components/register/register-form/register-form.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +32,8 @@ import {TokenInterceptor} from "./services/token.interceptor";
     NavMenuComponent,
     LoginComponent,
     LoginFormComponent,
+    RegisterComponent,
+    RegisterFormComponent,
   ],
   imports: [
     BrowserModule,
@@ -52,6 +56,7 @@ import {TokenInterceptor} from "./services/token.interceptor";
     },
     AuthService
   ],
+  exports: [],
   bootstrap: [AppComponent]
 })
 export class AppModule {

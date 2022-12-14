@@ -22,6 +22,10 @@ export class HandlerService {
     return !localStorage.getItem('userInfo');
   }
 
+  checkIfUserWantsToRegister(): boolean{
+    return !!localStorage.getItem('registerAttempt');
+  }
+
   getUserCredentialsFromStorage(): any {
     if (localStorage['userCredentials']) {
       return JSON.parse(localStorage['userCredentials']);

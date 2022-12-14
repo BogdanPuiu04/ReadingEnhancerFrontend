@@ -23,6 +23,21 @@ export class UserService {
   ) {
   }
 
+  register(user: UserModel) {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Headers': 'Content-Type',
+      'Access-Control-Allow-Methods': '*'
+    })
+    const body = JSON.stringify(user);
+    return this.http.post<userRequestData>(`${environment.baseUrl}/api/User/register`,
+      body,
+      {
+        headers
+      })
+  }
+
   login(user: UserModel) {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
@@ -42,6 +57,7 @@ export class UserService {
   }
 
   logout(): void {
+    this.stopRefreshToken();
     localStorage.removeItem('userInfo');
     this.router.navigate(['/login']);
   }

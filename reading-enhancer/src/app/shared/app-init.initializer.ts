@@ -2,7 +2,6 @@ import {UserService} from "../services/user.service";
 import {HandlerService} from "../services/handler.service";
 import {AuthService} from "../services/login-handlers/auth.service";
 import {userCredentialsModel} from "../models/userCredentialsModel";
-import {userRequestData} from "../models/userRequestData.model";
 
 export function appInitializer(userService: UserService, handlerService: HandlerService, authService: AuthService): () => Promise<unknown> {
   return () => new Promise((resolve) => {

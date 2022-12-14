@@ -16,4 +16,8 @@ export class AuthService {
 
     return !this.jwtHelper.isTokenExpired(token);
   }
+
+  public isRegistering(): boolean{
+    return this.handlerService.checkIfUserWantsToRegister();
+  }
 }

@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {Router} from "@angular/router";
+import {UserService} from "../../services/user.service";
 
 @Component({
   selector: 'app-nav-menu',
@@ -8,14 +8,13 @@ import {Router} from "@angular/router";
 })
 export class NavMenuComponent implements OnInit {
 
-  constructor(private router: Router) {
+  constructor(private userService: UserService) {
   }
 
   ngOnInit(): void {
   }
 
   logout(): void {
-    this.router.navigate(['/login']);
-    localStorage.removeItem("userInfo");
+    this.userService.logout();
   }
 }
