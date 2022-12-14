@@ -47,7 +47,7 @@ export class UserService {
   }
 
   refreshToken(): Observable<any> {
-    return this.http.post(`${environment.baseUrl}/User/refresh-token`, null)
+    return this.http.post(`${environment.baseUrl}/api/User/refresh-token`, null)
   }
 
   startRefreshToken(): void {
@@ -62,6 +62,7 @@ export class UserService {
         this.refreshToken().subscribe({
           next: (res: userRequestData) => {
             if (res.isSuccessful) {
+              console.log(res.data.token);
               user.token = res.data.token;
               localStorage.setItem('userInfo', JSON.stringify(user));
               this.stopRefreshToken();

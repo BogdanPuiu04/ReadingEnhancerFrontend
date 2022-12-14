@@ -8,26 +8,24 @@ export function appInitializer(userService: UserService, handlerService: Handler
   return () => new Promise((resolve) => {
     if (authService.isAuthenticated()) {
       userService.refreshToken().subscribe({
-        next: ( res: userRequestData) => {
-          if(res.isSuccessful){
+        next: (res) => {
+          if (res.isSuccessful) {
             const user: userCredentialsModel = handlerService.getUserFromStorage();
-            user.token=res.data.token;
-            localStorage.setItem('userInfo',JSON.stringify(user));
+            user.token= res.data;
+            localStorage.setItem('userInfo', JSON.stringify(user));
             userService.stopRefreshToken();
             userService.startRefreshToken();
-          }
-          else {
+          } else {
             userService.logout();
             userService.stopRefreshToken();
           }
-      },
-      error: () =>{
+        },
+        error: () => {
           userService.logout();
           userService.stopRefreshToken();
-      }
-      }).add(resolve(null));
-    }
-    else {
+        }
+      }).add(resolve("test"));
+    } else {
       userService.logout();
       userService.stopRefreshToken();
       resolve(null);
