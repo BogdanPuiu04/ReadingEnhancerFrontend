@@ -7,6 +7,7 @@ import {environment} from "../../environments/environment";
 import {userCredentialsModel} from "../models/userCredentialsModel";
 import {userRequestData} from "../models/userRequestData.model";
 import {Observable} from "rxjs";
+import {RegisterUserModel} from "../models/registerUserModel";
 
 @Injectable({
   providedIn: 'root'
@@ -23,13 +24,14 @@ export class UserService {
   ) {
   }
 
-  register(user: UserModel) {
+  register(user: RegisterUserModel) {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       'Access-Control-Allow-Origin': '*',
       'Access-Control-Allow-Headers': 'Content-Type',
       'Access-Control-Allow-Methods': '*'
     })
+    console.log(user);
     const body = JSON.stringify(user);
     return this.http.post<userRequestData>(`${environment.baseUrl}/api/User/register`,
       body,

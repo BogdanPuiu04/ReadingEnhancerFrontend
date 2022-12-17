@@ -1,11 +1,27 @@
 <form class="form" [formGroup]='form' (ngSubmit)="onSubmit()">
   <div class="form__input">
+    <app-input [formGroup]="form" inputType="firstName" label="First Name" [controlName]="'firstName'"></app-input>
+    <div *ngFor="let validation of accountValidationMessages.firstName">
+      <div class="form__input__errorMessage"
+           *ngIf="this.form.get('firstName')?.hasError(validation.type) && (this.form.get('firstName')?.dirty || this.form.get('firstName')?.touched)">{{validation.message}}</div>
+    </div>
+    <app-input [formGroup]="form" inputType="lastName" label="Last Name" [controlName]="'lastName'"></app-input>
+    <div *ngFor="let validation of accountValidationMessages.lastName">
+      <div class="form__input__errorMessage"
+           *ngIf="this.form.get('lastName')?.hasError(validation.type) && (this.form.get('lastName')?.dirty || this.form.get('lastName')?.touched)">{{validation.message}}</div>
+    </div>
     <app-input [formGroup]="form" inputType="username" label="Username" [controlName]="'userName'"></app-input>
     <div *ngFor="let validation of accountValidationMessages.userName">
       <div class="form__input__errorMessage"
            *ngIf="this.form.get('userName')?.hasError(validation.type) && (this.form.get('userName')?.dirty || this.form.get('userName')?.touched)">{{validation.message}}</div>
     </div>
     <app-input [formGroup]='form' inputType="password" label="Password" [controlName]="'password'"></app-input>
+    <app-input [formGroup]='form' inputType="password" label="Confirm Password" [controlName]="'confirmPassword'"></app-input>
+    <div *ngFor="let validation of accountValidationMessages.confirmPassword">
+      <div class="form__input__errorMessage"
+           *ngIf="this.form.get('confirmPassword')?.hasError(validation.type) && (this.form.get('confirmPassword')?.dirty || this.form.get('confirmPassword')?.touched)">{{validation.message}}</div>
+    </div>
+    <div class="form__input__errorMessage" *ngIf="invalidCredentials">Invalid Credentials</div>
   </div>
   <div class="form__actions">
     <div class="form__actions__button">
