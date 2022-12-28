@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup} from "@angular/forms";
 import {EnhancedTextService} from "../../../services/enhanced-text.service";
+import {ModalService} from "../../../services/modal.service";
 
 @Component({
   selector: 'app-url-form',
@@ -12,7 +13,8 @@ export class UrlFormComponent implements OnInit {
   webpage !: string;
 
   constructor(private formBuilder: FormBuilder,
-              private textService: EnhancedTextService) {
+              private textService: EnhancedTextService,
+              private modalService: ModalService) {
   }
 
   initForm(): void {
@@ -36,6 +38,13 @@ export class UrlFormComponent implements OnInit {
     })
   }
 
+  openModal(id: string) {
+    this.modalService.open(id);
+  }
+
+  closeModal(id: string){
+    this.modalService.close(id);
+  }
   ngOnInit(): void {
     this.initForm();
   }
