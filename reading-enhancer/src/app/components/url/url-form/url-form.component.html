@@ -1,0 +1,16 @@
+<form class="url_form" [formGroup]='urlForm' (ngSubmit)="onSubmit()">
+  <div class="url-form__input">
+    <app-input [formGroup]='urlForm' inputType="text" label="Enhance a webpage" [controlName]="'enhancedWebpage'"></app-input>
+  </div>
+  <div class="url_form__actions">
+    <div class="url_form__actions__button">
+      <app-button [disabledValue]="!urlForm.valid" buttonText="Enhance!" iconPosition="right"
+                  buttonSize="large"></app-button>
+    </div>
+  </div>
+</form>
+
+<div class="enhancedPage">
+  <iframe srcdoc="{{webpage}}" width="600"></iframe>
+  <!--  <div [innerHTML]="webpage"></div>-->
+</div>

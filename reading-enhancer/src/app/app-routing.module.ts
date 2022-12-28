@@ -6,6 +6,7 @@ import {AuthGuard} from "./services/login-handlers/auth.guard";
 import {LoggedInGuard} from "./services/login-handlers/logged-in.guard";
 import {RegisterComponent} from "./components/register/register.component";
 import {RegisterGuard} from "./services/register-handlers/register.guard";
+import {UrlComponent} from "./components/url/url.component";
 
 const routes: Routes = [
   {
@@ -27,6 +28,11 @@ const routes: Routes = [
     path: 'register',
     component: RegisterComponent,
     canActivate: [RegisterGuard]
+  },
+  {
+    path: 'webpage',
+    component: UrlComponent,
+    canActivate: [AuthGuard]
   }
 ];
 

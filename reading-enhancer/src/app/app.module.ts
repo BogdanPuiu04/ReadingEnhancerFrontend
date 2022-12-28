@@ -21,6 +21,8 @@ import {HandlerService} from "./services/handler.service";
 import {TokenInterceptor} from "./services/token.interceptor";
 import {RegisterComponent} from './components/register/register.component';
 import {RegisterFormComponent} from './components/register/register-form/register-form.component';
+import { UrlComponent } from './components/url/url.component';
+import { UrlFormComponent } from './components/url/url-form/url-form.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +36,8 @@ import {RegisterFormComponent} from './components/register/register-form/registe
     LoginFormComponent,
     RegisterComponent,
     RegisterFormComponent,
+    UrlComponent,
+    UrlFormComponent,
   ],
   imports: [
     BrowserModule,
