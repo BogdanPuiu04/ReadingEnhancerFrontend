@@ -11,10 +11,10 @@
 </form>
 
 <div class="enhancedPage">
-    <app-button (clickBtn)="openModal('webpage-modal')" buttonText="View Page" buttonSize="medium"></app-button>
+    <app-button (clickBtn)="openModal('webpage-modal')" buttonText="View Page" buttonSize="medium" [disabledValue]="!webpage"></app-button>
 </div>
 
 <app-modal id="webpage-modal">
-  <div [innerHTML]="webpage"></div>
+  <div id="enhanced-text" [innerHTML]="webpage"></div>
   <app-button (clickBtn)="closeModal('webpage-modal')" buttonText="Close"></app-button>
 </app-modal>

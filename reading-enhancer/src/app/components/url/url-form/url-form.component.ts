@@ -28,7 +28,7 @@ export class UrlFormComponent implements OnInit {
   }
 
   enhanceWebpage(webpageToBeConverted: string) {
-    this.textService.enhanceText(webpageToBeConverted).subscribe({
+    this.textService.enhanceWebsite(webpageToBeConverted).subscribe({
       next: (res) => {
         this.webpage = res;
       },
@@ -42,9 +42,10 @@ export class UrlFormComponent implements OnInit {
     this.modalService.open(id);
   }
 
-  closeModal(id: string){
+  closeModal(id: string) {
     this.modalService.close(id);
   }
+
   ngOnInit(): void {
     this.initForm();
   }

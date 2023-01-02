@@ -23,8 +23,21 @@ export class EnhancedTextService {
     });
     const content = JSON.stringify(text);
     return this.http.post<string>(
-      `${environment.baseUrl}/api/EnhancedText/request`,content,
+      `${environment.baseUrl}/api/EnhancedText/request`, content,
       {headers: headers}
     )
+  }
+
+  enhanceWebsite(webpage: string): Observable<string> {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Headers': 'Content-Type',
+      'Access-Control-Allow-Methods': '*',
+    });
+    const content = JSON.stringify(webpage);
+    return this.http.post<string>(`${environment.baseUrl}/api/EnhancedText/EnhanceUrl`, content, {
+      headers: headers
+    })
   }
 }
