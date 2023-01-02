@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {UserService} from "../../services/user.service";
 import {Router} from "@angular/router";
+import {HandlerService} from "../../services/handler.service";
 
 @Component({
   selector: 'app-nav-menu',
@@ -8,12 +9,14 @@ import {Router} from "@angular/router";
   styleUrls: ['./nav-menu.component.scss']
 })
 export class NavMenuComponent implements OnInit {
-
+  name: string ='';
   constructor(private userService: UserService,
+              private handlerService: HandlerService,
               private router: Router) {
   }
 
   ngOnInit(): void {
+    this.name= this.handlerService.getUserFromStorage().name
   }
 
   logout(): void {

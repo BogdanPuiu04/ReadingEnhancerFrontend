@@ -7,6 +7,7 @@ import {LoggedInGuard} from "./services/login-handlers/logged-in.guard";
 import {RegisterComponent} from "./components/register/register.component";
 import {RegisterGuard} from "./services/register-handlers/register.guard";
 import {UrlComponent} from "./components/url/url.component";
+import {ReadingTestComponent} from "./components/reading-test/reading-test.component";
 
 const routes: Routes = [
   {
@@ -32,6 +33,11 @@ const routes: Routes = [
   {
     path: 'webpage',
     component: UrlComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'minigame',
+    component: ReadingTestComponent,
     canActivate: [AuthGuard]
   }
 ];

@@ -30,8 +30,7 @@ export class UserService {
       'Access-Control-Allow-Origin': '*',
       'Access-Control-Allow-Headers': 'Content-Type',
       'Access-Control-Allow-Methods': '*'
-    })
-    console.log(user);
+    });
     const body = JSON.stringify(user);
     return this.http.post<userRequestData>(`${environment.baseUrl}/api/User/register`,
       body,

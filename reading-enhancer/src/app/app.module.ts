@@ -24,6 +24,7 @@ import {RegisterFormComponent} from './components/register/register-form/registe
 import { UrlComponent } from './components/url/url.component';
 import { UrlFormComponent } from './components/url/url-form/url-form.component';
 import { ModalComponent } from './components/url/url-form/modal/modal.component';
+import { ReadingTestComponent } from './components/reading-test/reading-test.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import { ModalComponent } from './components/url/url-form/modal/modal.component'
     UrlComponent,
     UrlFormComponent,
     ModalComponent,
+    ReadingTestComponent,
   ],
   imports: [
     BrowserModule,
