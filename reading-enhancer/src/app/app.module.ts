@@ -5,7 +5,7 @@ import {AppComponent} from './app.component';
 import {MainPageComponent} from './components/main-page/main-page.component';
 import {FormComponent} from './components/main-page/form/form.component';
 import {MatFormFieldModule} from "@angular/material/form-field";
-import {ReactiveFormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {InputComponent} from './shared/input/input.component';
 import {InlineSVGModule} from "ng-inline-svg-2";
 import {ButtonComponent} from './shared/button/button.component';
@@ -25,6 +25,9 @@ import { UrlComponent } from './components/url/url.component';
 import { UrlFormComponent } from './components/url/url-form/url-form.component';
 import { ModalComponent } from './components/url/url-form/modal/modal.component';
 import { ReadingTestComponent } from './components/reading-test/reading-test.component';
+import {CdTimerModule} from "angular-cd-timer";
+import { QuizComponent } from './components/reading-test/quiz/quiz.component';
+import {MatRadioModule} from "@angular/material/radio";
 
 @NgModule({
   declarations: [
@@ -42,6 +45,7 @@ import { ReadingTestComponent } from './components/reading-test/reading-test.com
     UrlFormComponent,
     ModalComponent,
     ReadingTestComponent,
+    QuizComponent,
   ],
   imports: [
     BrowserModule,
@@ -49,7 +53,10 @@ import { ReadingTestComponent } from './components/reading-test/reading-test.com
     MatFormFieldModule,
     ReactiveFormsModule,
     InlineSVGModule,
-    HttpClientModule
+    HttpClientModule,
+    CdTimerModule,
+    MatRadioModule,
+    FormsModule
   ],
   providers: [{
     provide: APP_INITIALIZER,

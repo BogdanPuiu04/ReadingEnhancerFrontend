@@ -21,6 +21,7 @@
     "@angular/platform-browser-dynamic": "^14.2.0",
     "@angular/router": "^14.2.0",
     "@auth0/angular-jwt": "^5.1.0",
+    "angular-cd-timer": "^3.0.0",
     "ng-inline-svg-2": "^15.0.0",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",

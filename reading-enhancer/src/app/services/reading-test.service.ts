@@ -21,6 +21,6 @@ export class ReadingTestService {
       'Access-Control-Allow-Headers': 'Content-Type',
       'Access-Control-Allow-Methods': '*'
     });
-    return this.http.get<ReadingText>(`${environment.baseUrl}/api/EnhancedText`)
+    return this.http.get<ReadingText>(`${environment.baseUrl}/api/EnhancedText/GetRandomText`);
   }
 }

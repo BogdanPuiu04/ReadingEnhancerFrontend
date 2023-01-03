@@ -1,1 +1,10 @@
-<div>{{text.text}}</div>
+<div id="wrapper" *ngIf="!isRead">
+  <div> Time:
+    <cd-timer [autoStart]="true" [startTime]="0" format="ms" (onStop)="setTime()"></cd-timer>
+  </div>
+  <div>{{text.text}}</div>
+</div>
+<app-button buttonText="I have read everything" buttonSize="medium" (click)="stopTimer()"></app-button>
+<div id="quiz-wrapper" *ngIf="isRead">
+  <app-quiz [text]="text"></app-quiz>
+</div>

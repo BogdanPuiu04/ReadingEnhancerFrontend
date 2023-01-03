@@ -1,0 +1,15 @@
+<form class="form" [formGroup]='form' (ngSubmit)="onSubmit()">
+  <div class="form__input">
+    <div class="form__input__question" *ngFor="let question of text.questionsList">
+      {{question.text}}
+            <div class="form__input__question__answer" *ngFor="let answer of question.answers">
+              <label for="{{answer.id}}"></label>
+              <br>
+              <label>
+                <input type="radio" name="answer" value="{{answer.isCorrect}}" required>
+                {{answer.text}}
+              </label>
+            </div>
+    </div>
+  </div>
+</form>

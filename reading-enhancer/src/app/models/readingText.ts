@@ -3,11 +3,11 @@ import {Question} from "./question";
 export class ReadingText {
   id: string;
   text: string;
-  questions: Question[];
+  questionsList: Question[];
 
   constructor(options?: ReadingText) {
     this.id = options?.id!;
     this.text = options?.text!;
-    this.questions = options?.questions!;
+    this.questionsList = options?.questionsList!;
   }
 }

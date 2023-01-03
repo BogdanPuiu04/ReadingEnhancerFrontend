@@ -30,4 +30,8 @@ export class NavMenuComponent implements OnInit {
   goHome(): void{
     this.router.navigate(['/main']);
   }
+
+  goToTest(): void{
+    this.router.navigate(['/minigame']);
+  }
 }
