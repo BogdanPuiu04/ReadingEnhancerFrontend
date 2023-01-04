@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {ReadingText} from "../../../models/readingText";
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-quiz',
@@ -18,16 +18,15 @@ export class QuizComponent implements OnInit {
 
   initForm(): void {
     this.form = this.formBuilder.group({
-      answer: Validators.required
+      answer: new FormControl('', Validators.required)
     });
   }
 
   onSubmit(): void {
-
+    console.log(this.form.value)
   }
 
   ngOnInit(): void {
-    console.log(this.text.questionsList)
     this.initForm();
   }
 

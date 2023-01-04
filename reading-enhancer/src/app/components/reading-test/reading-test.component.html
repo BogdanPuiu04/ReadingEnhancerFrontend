@@ -1,9 +1,12 @@
 <div id="wrapper" *ngIf="!isRead">
   <div> Time:
-    <cd-timer [autoStart]="true" [startTime]="0" format="ms" (onStop)="setTime()"></cd-timer>
+    <cd-timer [autoStart]="true" [startTime]="0" format="ms" (onStop)="setTime()" (onTick)="calculateWordsPerMinute()"></cd-timer>
   </div>
   <div>{{text.text}}</div>
 </div>
+    <div>
+      {{wpm}} words/minute
+    </div>
 <app-button buttonText="I have read everything" buttonSize="medium" (click)="stopTimer()"></app-button>
 <div id="quiz-wrapper" *ngIf="isRead">
   <app-quiz [text]="text"></app-quiz>

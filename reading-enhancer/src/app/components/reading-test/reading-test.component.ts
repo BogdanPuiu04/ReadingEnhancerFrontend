@@ -15,6 +15,8 @@ import {FormBuilder, FormGroup} from "@angular/forms";
 export class ReadingTestComponent implements OnInit {
   @Output() text: ReadingText = new ReadingText();
   browserRefresh: boolean = false;
+  words: number = 0;
+  wpm: number = 200;
 
   form!: FormGroup;
 
@@ -31,8 +33,6 @@ export class ReadingTestComponent implements OnInit {
 
   setTime(): void {
     this.time = this.timer.get().seconds;
-    //maybe calculate reading speed on tick?
-    console.log(this.time);
   }
 
   ngOnInit(): void {
@@ -53,5 +53,10 @@ export class ReadingTestComponent implements OnInit {
   stopTimer(): void {
     this.timer.stop();
     this.isRead = true;
+  }
+
+  calculateWordsPerMinute(): void {
+    this.words = this.text.text.split(' ').length;
+    this.wpm = Math.floor(this.words / this.timer.get().seconds * 60);
   }
 }

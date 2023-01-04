@@ -6,10 +6,13 @@
               <label for="{{answer.id}}"></label>
               <br>
               <label>
-                <input type="radio" name="answer" value="{{answer.isCorrect}}" required>
+                <input type="radio" name="answer" value="{{answer.isCorrect}}" formControlName="answer" required>
                 {{answer.text}}
               </label>
             </div>
+    </div>
+    <div class="form__input__submit">
+      <app-button [disabledValue]="!form.valid" buttonText="Submit answers" buttonSize="large"></app-button>
     </div>
   </div>
 </form>
