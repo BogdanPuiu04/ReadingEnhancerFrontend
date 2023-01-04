@@ -1,15 +1,16 @@
-<form class="form" [formGroup]='form' (ngSubmit)="onSubmit()">
+<form class="form" (ngSubmit)="onSubmit()">
   <div class="form__input">
     <div class="form__input__question" *ngFor="let question of text.questionsList">
       {{question.text}}
-            <div class="form__input__question__answer" *ngFor="let answer of question.answers">
-              <label for="{{answer.id}}"></label>
-              <br>
-              <label>
-                <input type="radio" name="answer" value="{{answer.isCorrect}}" formControlName="answer" required>
-                {{answer.text}}
-              </label>
-            </div>
+      <div class="form__input__question__answer" *ngFor="let answer of question.answers;let i =index">
+        <label for="{{answer.id}}"></label>
+        <br>
+        <label>
+          <input id="{{answer.id}}" [checked]="options[question.id]" [(ngModel)]="options[question.id]" type="radio"  value="{{answer.isCorrect}}"
+          name="option{{question.id}}">
+          {{answer.text}}
+        </label>
+      </div>
     </div>
     <div class="form__input__submit">
       <app-button [disabledValue]="!form.valid" buttonText="Submit answers" buttonSize="large"></app-button>

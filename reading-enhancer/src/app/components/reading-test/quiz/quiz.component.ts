@@ -1,6 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {ReadingText} from "../../../models/readingText";
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: 'app-quiz',
@@ -13,17 +14,26 @@ export class QuizComponent implements OnInit {
   form!: FormGroup;
   test!: string;
 
-  constructor(private formBuilder: FormBuilder) {
+  options: any = [];
+  option: any = [];
+
+  constructor(private formBuilder: FormBuilder,
+              private router: Router,
+              private route: ActivatedRoute) {
   }
+
 
   initForm(): void {
     this.form = this.formBuilder.group({
-      answer: new FormControl('', Validators.required)
+      answer: Validators.required
     });
   }
 
   onSubmit(): void {
-    console.log(this.form.value)
+    console.log(this.options)
+    if (this.form.valid) {
+      this.router.navigate(['results'], {relativeTo: this.route});
+    }
   }
 
   ngOnInit(): void {

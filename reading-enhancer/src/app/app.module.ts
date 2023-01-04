@@ -28,6 +28,7 @@ import { ReadingTestComponent } from './components/reading-test/reading-test.com
 import {CdTimerModule} from "angular-cd-timer";
 import { QuizComponent } from './components/reading-test/quiz/quiz.component';
 import {MatRadioModule} from "@angular/material/radio";
+import { ResultComponent } from './components/result/result.component';
 
 @NgModule({
   declarations: [
@@ -46,6 +47,7 @@ import {MatRadioModule} from "@angular/material/radio";
     ModalComponent,
     ReadingTestComponent,
     QuizComponent,
+    ResultComponent,
   ],
   imports: [
     BrowserModule,

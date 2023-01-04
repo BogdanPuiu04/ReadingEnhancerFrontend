@@ -8,6 +8,7 @@ import {RegisterComponent} from "./components/register/register.component";
 import {RegisterGuard} from "./services/register-handlers/register.guard";
 import {UrlComponent} from "./components/url/url.component";
 import {ReadingTestComponent} from "./components/reading-test/reading-test.component";
+import {ResultComponent} from "./components/result/result.component";
 
 const routes: Routes = [
   {
@@ -38,7 +39,13 @@ const routes: Routes = [
   {
     path: 'minigame',
     component: ReadingTestComponent,
-    canActivate: [AuthGuard]
+    canActivate: [AuthGuard],
+    children: [{
+      path: 'results',
+      component: ResultComponent,
+      canActivate: [AuthGuard]
+    }
+    ]
   }
 ];
 
