@@ -40,12 +40,11 @@ const routes: Routes = [
     path: 'minigame',
     component: ReadingTestComponent,
     canActivate: [AuthGuard],
-    children: [{
-      path: 'results',
-      component: ResultComponent,
-      canActivate: [AuthGuard]
-    }
-    ]
+  },
+  {
+    path: 'results',
+    component: ResultComponent,
+    canActivate: [AuthGuard]
   }
 ];
 

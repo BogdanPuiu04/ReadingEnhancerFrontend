@@ -9,5 +9,6 @@
     </div>
 <app-button buttonText="I have read everything" buttonSize="medium" (click)="stopTimer()"></app-button>
 <div id="quiz-wrapper" *ngIf="isRead">
-  <app-quiz [text]="text"></app-quiz>
+  <app-quiz [text]="text" [wpm]="wpm"></app-quiz>
 </div>
+

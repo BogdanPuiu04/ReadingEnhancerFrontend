@@ -6,8 +6,9 @@
         <label for="{{answer.id}}"></label>
         <br>
         <label>
-          <input id="{{answer.id}}" [checked]="options[question.id]" [(ngModel)]="options[question.id]" type="radio"  value="{{answer.isCorrect}}"
-          name="option{{question.id}}">
+          <input id="{{answer.id}}" [checked]="options[answer.id]" [(ngModel)]="options[answer.id]"
+                 type="radio" value="{{answer.isCorrect}}"
+                 name="option{{question.id}}">
           {{answer.text}}
         </label>
       </div>

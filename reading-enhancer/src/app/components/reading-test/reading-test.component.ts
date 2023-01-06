@@ -16,7 +16,7 @@ export class ReadingTestComponent implements OnInit {
   @Output() text: ReadingText = new ReadingText();
   browserRefresh: boolean = false;
   words: number = 0;
-  wpm: number = 200;
+  @Output() wpm: number = 200;
 
   form!: FormGroup;
 
@@ -53,6 +53,7 @@ export class ReadingTestComponent implements OnInit {
   stopTimer(): void {
     this.timer.stop();
     this.isRead = true;
+    console.log(this.wpm);
   }
 
   calculateWordsPerMinute(): void {

@@ -1,9 +1,17 @@
 import {Injectable} from '@angular/core';
+import {BehaviorSubject} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
 })
 export class HandlerService {
+
+  private basicResults = new BehaviorSubject<number>(0);
+  private basicSpeed = new BehaviorSubject<number>(0);
+  private basicQuestionsCount = new BehaviorSubject<number>(0);
+  currentResults = this.basicResults.asObservable();
+  currentSpeed = this.basicSpeed.asObservable();
+  currentQuestionsCount = this.basicQuestionsCount.asObservable();
 
   constructor() {
   }
@@ -22,7 +30,7 @@ export class HandlerService {
     return !localStorage.getItem('userInfo');
   }
 
-  checkIfUserWantsToRegister(): boolean{
+  checkIfUserWantsToRegister(): boolean {
     return !!localStorage.getItem('registerAttempt');
   }
 
@@ -32,5 +40,10 @@ export class HandlerService {
     }
   }
 
+  updateResults(readingSpeed: number, results: number, questionsCount: number): any {
+    this.basicResults.next(results);
+    this.basicSpeed.next(readingSpeed);
+    this.basicQuestionsCount.next(questionsCount);
+  }
 
 }
