@@ -32,6 +32,6 @@ export class NavMenuComponent implements OnInit {
   }
 
   goToTest(): void{
-    this.router.navigate(['/minigame']);
+    this.router.navigate(['/begin']);
   }
 }

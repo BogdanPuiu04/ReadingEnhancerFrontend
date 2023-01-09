@@ -6,15 +6,15 @@
         <label for="{{answer.id}}"></label>
         <br>
         <label>
-          <input id="{{answer.id}}" [checked]="options[answer.id]" [(ngModel)]="options[answer.id]"
+          <input id="{{answer.id}}" [checked]="options[question.id]" [(ngModel)]="options[question.id]"
                  type="radio" value="{{answer.isCorrect}}"
-                 name="option{{question.id}}">
+                 name="option{{question.id}}" [required]="true">
           {{answer.text}}
         </label>
       </div>
     </div>
     <div class="form__input__submit">
-      <app-button [disabledValue]="!form.valid" buttonText="Submit answers" buttonSize="large"></app-button>
+      <app-button [disabledValue]="!isValid()" buttonText="Submit answers" buttonSize="large"></app-button>
     </div>
   </div>
 </form>

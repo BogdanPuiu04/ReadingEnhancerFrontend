@@ -29,6 +29,7 @@ import {CdTimerModule} from "angular-cd-timer";
 import { QuizComponent } from './components/reading-test/quiz/quiz.component';
 import {MatRadioModule} from "@angular/material/radio";
 import { ResultComponent } from './components/result/result.component';
+import { BeginComponent } from './components/begin/begin.component';
 
 @NgModule({
   declarations: [
@@ -48,6 +49,7 @@ import { ResultComponent } from './components/result/result.component';
     ReadingTestComponent,
     QuizComponent,
     ResultComponent,
+    BeginComponent,
   ],
   imports: [
     BrowserModule,

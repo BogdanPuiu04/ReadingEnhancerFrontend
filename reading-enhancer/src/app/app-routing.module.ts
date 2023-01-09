@@ -9,6 +9,7 @@ import {RegisterGuard} from "./services/register-handlers/register.guard";
 import {UrlComponent} from "./components/url/url.component";
 import {ReadingTestComponent} from "./components/reading-test/reading-test.component";
 import {ResultComponent} from "./components/result/result.component";
+import {BeginComponent} from "./components/begin/begin.component";
 
 const routes: Routes = [
   {
@@ -44,6 +45,11 @@ const routes: Routes = [
   {
     path: 'results',
     component: ResultComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'begin',
+    component: BeginComponent,
     canActivate: [AuthGuard]
   }
 ];

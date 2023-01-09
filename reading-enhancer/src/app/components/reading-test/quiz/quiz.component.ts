@@ -20,7 +20,6 @@ export class QuizComponent implements OnInit {
   options: { [key: string]: any[] } = {}
   option: any = [];
 
-
   constructor(private formBuilder: FormBuilder,
               private router: Router,
               private route: ActivatedRoute,
@@ -30,14 +29,13 @@ export class QuizComponent implements OnInit {
 
   initForm(): void {
     this.form = this.formBuilder.group({
-      answer: Validators.required
+      answer: Validators.required,
     });
   }
 
   onSubmit(): void {
     let keys = Object.values(this.options);
     let count = 0;
-    console.log(this.wpm);
     keys.forEach(x => {
       // @ts-ignore
       if (x === "false")
@@ -45,16 +43,18 @@ export class QuizComponent implements OnInit {
     });
     this.rightAnswers = this.text.questionsList.length - count;
     if (this.form.valid) {
-      this.handlerService.updateResults(this.wpm, this.rightAnswers, this.text.questionsList.length);
+      this.handlerService.updateResults(this.wpm, this.rightAnswers / this.text.questionsList.length * 100);
       this.router.navigate(['results']);
     }
   }
 
   ngOnInit(): void {
-    console.log(this.wpm);
     this.handlerService.currentResults.subscribe(rightAnswers => this.rightAnswers = rightAnswers);
-    // this.handlerService.currentQuestionsCount.subscribe(currentQuestions => currentQuestions = this.text.questionsList.length)
     this.initForm();
   }
 
+  isValid(): boolean {
+    let keys = Object.keys(this.options);
+    return keys.length >= this.text.questionsList.length;
+  }
 }

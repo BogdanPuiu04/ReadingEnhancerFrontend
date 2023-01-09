@@ -8,7 +8,6 @@ import {HandlerService} from "../../services/handler.service";
 })
 export class ResultComponent implements OnInit {
 
-  questionsCount!: number;
   readingSpeed!: number;
   results!: number;
   constructor(private handlerService: HandlerService) {
@@ -17,7 +16,6 @@ export class ResultComponent implements OnInit {
   ngOnInit(): void {
     this.handlerService.currentResults.subscribe(results => this.results = results);
     this.handlerService.currentSpeed.subscribe(readingSpeed => this.readingSpeed = readingSpeed);
-    this.handlerService.currentQuestionsCount.subscribe(questionsCount => this.questionsCount = questionsCount)
   }
 
 }

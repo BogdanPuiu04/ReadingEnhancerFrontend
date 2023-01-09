@@ -21,11 +21,11 @@ export class ReadingTestComponent implements OnInit {
   form!: FormGroup;
 
   constructor(private readingService: ReadingTestService,
-              private router: Router,
-              private formBuilder: FormBuilder) {
+              private router: Router) {
   }
 
   time: number = 0;
+  delay: number = 0;
   isRead: boolean = false;
 
   @ViewChild(CdTimerComponent) timer!: CdTimerComponent;
@@ -37,11 +37,10 @@ export class ReadingTestComponent implements OnInit {
 
   ngOnInit(): void {
     this.getTextBasedQuestion();
-    //TODO: reroute to a 'begin' page
-    // this.browserRefresh=browserRefresh;
-    // // if(this.browserRefresh){
-    // //   this.router.navigate(['/main']);
-    // }
+    this.browserRefresh = browserRefresh;
+    if (this.browserRefresh) {
+      this.router.navigate(['/begin']);
+    }
   }
 
   getTextBasedQuestion(): void {
@@ -51,13 +50,15 @@ export class ReadingTestComponent implements OnInit {
   }
 
   stopTimer(): void {
-    this.timer.stop();
-    this.isRead = true;
-    console.log(this.wpm);
+    if (this.delay > 10) {
+      this.timer.stop();
+      this.isRead = true;
+    }
   }
 
   calculateWordsPerMinute(): void {
     this.words = this.text.text.split(' ').length;
-    this.wpm = Math.floor(this.words / this.timer.get().seconds * 60);
+    this.delay = this.timer.get().minutes * 60 + this.timer.get().seconds;
+    this.wpm = Math.floor(this.words / (this.timer.get().minutes * 60 + this.timer.get().seconds) * 60);
   }
 }
