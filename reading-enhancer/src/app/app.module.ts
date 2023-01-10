@@ -21,15 +21,20 @@ import {HandlerService} from "./services/handler.service";
 import {TokenInterceptor} from "./services/token.interceptor";
 import {RegisterComponent} from './components/register/register.component';
 import {RegisterFormComponent} from './components/register/register-form/register-form.component';
-import { UrlComponent } from './components/url/url.component';
-import { UrlFormComponent } from './components/url/url-form/url-form.component';
-import { ModalComponent } from './components/url/url-form/modal/modal.component';
-import { ReadingTestComponent } from './components/reading-test/reading-test.component';
+import {UrlComponent} from './components/url/url.component';
+import {UrlFormComponent} from './components/url/url-form/url-form.component';
+import {ModalComponent} from './components/url/url-form/modal/modal.component';
+import {ReadingTestComponent} from './components/reading-test/reading-test.component';
 import {CdTimerModule} from "angular-cd-timer";
-import { QuizComponent } from './components/reading-test/quiz/quiz.component';
+import {QuizComponent} from './components/reading-test/quiz/quiz.component';
 import {MatRadioModule} from "@angular/material/radio";
-import { ResultComponent } from './components/result/result.component';
-import { BeginComponent } from './components/begin/begin.component';
+import {ResultComponent} from './components/result/result.component';
+import {BeginComponent} from './components/begin/begin.component';
+import {ChangeTestComponent} from './components/change-test/change-test.component';
+import {MatExpansionModule} from "@angular/material/expansion";
+import {MatNativeDateModule} from "@angular/material/core";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+
 
 @NgModule({
   declarations: [
@@ -50,6 +55,7 @@ import { BeginComponent } from './components/begin/begin.component';
     QuizComponent,
     ResultComponent,
     BeginComponent,
+    ChangeTestComponent,
   ],
   imports: [
     BrowserModule,
@@ -60,7 +66,14 @@ import { BeginComponent } from './components/begin/begin.component';
     HttpClientModule,
     CdTimerModule,
     MatRadioModule,
-    FormsModule
+    FormsModule,
+    MatExpansionModule,
+    BrowserAnimationsModule,
+    BrowserModule,
+    FormsModule,
+    HttpClientModule,
+    MatNativeDateModule,
+    ReactiveFormsModule,
   ],
   providers: [{
     provide: APP_INITIALIZER,

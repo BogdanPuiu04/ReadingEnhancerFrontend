@@ -1,0 +1,13 @@
+.change-test__wrapper{
+  //margin: 10% 15%;
+  &__texts{
+    &__edit{
+      display: flex;
+      padding:5%;
+      &__button{
+        margin-left: 5%;
+      }
+    }
+  }
+}
+

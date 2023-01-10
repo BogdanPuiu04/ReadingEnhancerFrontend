@@ -1,4 +1,5 @@
 export interface userCredentialsModel {
   name: string,
-  token: string
+  token: string,
+  isAdmin: boolean,
 }

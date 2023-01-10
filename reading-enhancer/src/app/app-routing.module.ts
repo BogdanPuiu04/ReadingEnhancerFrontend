@@ -10,6 +10,8 @@ import {UrlComponent} from "./components/url/url.component";
 import {ReadingTestComponent} from "./components/reading-test/reading-test.component";
 import {ResultComponent} from "./components/result/result.component";
 import {BeginComponent} from "./components/begin/begin.component";
+import {ChangeTestComponent} from "./components/change-test/change-test.component";
+import {AdminGuard} from "./services/admin-handlers/admin.guard";
 
 const routes: Routes = [
   {
@@ -51,6 +53,11 @@ const routes: Routes = [
     path: 'begin',
     component: BeginComponent,
     canActivate: [AuthGuard]
+  },
+  {
+    path: 'change-test',
+    component: ChangeTestComponent,
+    canActivate: [AdminGuard]
   }
 ];
 

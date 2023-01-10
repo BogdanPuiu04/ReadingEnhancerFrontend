@@ -1,12 +1,13 @@
-import { Injectable } from '@angular/core';
-import { JwtHelperService } from '@auth0/angular-jwt';
-import { HandlerService } from "../handler.service";
+import {Injectable} from '@angular/core';
+import {JwtHelperService} from '@auth0/angular-jwt';
+import {HandlerService} from "../handler.service";
 
 @Injectable()
 export class AuthService {
   jwtHelper = new JwtHelperService();
 
-  constructor(private handlerService: HandlerService) {}
+  constructor(private handlerService: HandlerService) {
+  }
 
   public isAuthenticated(): boolean {
     if (this.handlerService.checkStorageForUser()) {
@@ -17,7 +18,11 @@ export class AuthService {
     return !this.jwtHelper.isTokenExpired(token);
   }
 
-  public isRegistering(): boolean{
+  public isRegistering(): boolean {
     return this.handlerService.checkIfUserWantsToRegister();
+  }
+
+  public isAdmin(): boolean {
+    return this.handlerService.checkIfUserIsAdmin();
   }
 }

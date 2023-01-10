@@ -4,6 +4,7 @@ import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {ReadingText} from "../models/readingText";
 import {environment} from "../../environments/environment";
+import {AllReadingTextsResponse} from "../models/allReadingTextResponse";
 
 @Injectable({
   providedIn: 'root'
@@ -22,5 +23,9 @@ export class ReadingTestService {
       'Access-Control-Allow-Methods': '*'
     });
     return this.http.get<ReadingText>(`${environment.baseUrl}/api/EnhancedText/GetRandomText`);
+  }
+
+  getAllText(): Observable<AllReadingTextsResponse> {
+    return this.http.get<AllReadingTextsResponse>(`${environment.baseUrl}/api/EnhancedText`);
   }
 }

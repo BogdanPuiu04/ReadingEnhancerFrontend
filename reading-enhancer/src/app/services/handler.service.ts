@@ -34,6 +34,11 @@ export class HandlerService {
     return !!localStorage.getItem('registerAttempt');
   }
 
+  checkIfUserIsAdmin(): boolean {
+    const user = this.getUserFromStorage();
+    return user.isAdmin;
+  }
+
   getUserCredentialsFromStorage(): any {
     if (localStorage['userCredentials']) {
       return JSON.parse(localStorage['userCredentials']);

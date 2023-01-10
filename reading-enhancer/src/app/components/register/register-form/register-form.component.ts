@@ -129,7 +129,8 @@ export class RegisterFormComponent implements OnInit {
         if (res.isSuccessful) {
           const userCredentials: userCredentialsModel = {
             name: res.data.name,
-            token: res.data.token
+            token: res.data.token,
+            isAdmin: res.data.isAdmin
           };
           localStorage.removeItem('userCredentials');
           localStorage.removeItem('registerAttempt');
