@@ -11,12 +11,10 @@
           </mat-panel-description>
         </mat-expansion-panel-header>
         <div class="change-test__wrapper__texts__edit">
-          <!--        <p>{{text.text}}</p>-->
-          <p><span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci consequuntur corporis culpa dignissimos ea error impedit itaque magni molestiae natus nisi nulla omnis optio pariatur perspiciatis quidem sunt veritatis, voluptatum.</span><span>Atque debitis dignissimos error est excepturi fugiat impedit maxime nostrum optio quo recusandae sed tempora, veniam. Adipisci architecto consectetur deserunt eaque illo laboriosam minus sequi sint tempore veritatis. Cum, delectus!</span><span>Alias autem dolore esse ex necessitatibus repellat similique ut, veritatis? Aliquid aperiam assumenda earum id illum molestias, nam neque nulla officia perspiciatis, quasi quibusdam rerum sit suscipit temporibus vel voluptate.</span><span>Amet blanditiis dolore esse natus neque non, nulla, odio officia officiis, porro quas temporibus vel. Doloribus ea illo illum ipsam iste iure laborum, libero nam, non quasi quibusdam repellendus, voluptates.</span><span>Aut cupiditate dolorum fugit labore, magnam maxime molestias nihil odit officia quas, quisquam repudiandae, rerum voluptatem. Culpa doloribus ex laboriosam laborum saepe voluptatum! Accusamus cupiditate eos labore modi quam ut.</span>
-          </p>
-          <div class="change-test__wrapper__texts__edit__button">
+          <textarea [(ngModel)]="text.text" class="change-test__wrapper__texts__edit__textarea" cdkTextareaAutosize
+                    oninput='this.style.height = "";this.style.height = this.scrollHeight + "px"'></textarea>
+          <div class="change-test__wrapper__texts__edit__textarea__button">
             <app-button buttonText="Edit Text" buttonSize="medium" (click)="editText(text.id)"></app-button>
-            <input *ngIf="text.canEditCode" [(ngModel)]="item.name" type="text" class="form-control" />
           </div>
         </div>
         <mat-accordion>
