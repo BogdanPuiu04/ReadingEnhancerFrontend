@@ -34,6 +34,7 @@ import {ChangeTestComponent} from './components/change-test/change-test.componen
 import {MatExpansionModule} from "@angular/material/expansion";
 import {MatNativeDateModule} from "@angular/material/core";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import { EditableTextComponent } from './components/change-test/editable-text/editable-text.component';
 
 
 @NgModule({
@@ -56,6 +57,7 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
     ResultComponent,
     BeginComponent,
     ChangeTestComponent,
+    EditableTextComponent,
   ],
   imports: [
     BrowserModule,

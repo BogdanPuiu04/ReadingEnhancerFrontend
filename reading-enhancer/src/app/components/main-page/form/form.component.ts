@@ -33,6 +33,7 @@ export class FormComponent implements OnInit {
   enhanceText(textToBeConverted: string) {
     this.textService.enhanceText(textToBeConverted).subscribe({
       next: (res) => {
+        console.log(res)
         this.text= res;
       },
       error : (e) => {

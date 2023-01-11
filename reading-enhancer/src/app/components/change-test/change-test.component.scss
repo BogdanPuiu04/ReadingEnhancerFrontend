@@ -1,40 +1,39 @@
-.change-test__wrapper{
+@import "../../../assets/_variables.scss";
+
+.change-test__wrapper {
   //margin: 10% 15%;
-  &__texts{
-    &__edit{
+  &__texts {
+    &__edit {
       display: flex;
-      padding:5%;
+      padding: 5%;
       overflow-wrap: break-word;
-      &__textarea{
-        :host {
-          display: flex;
-        }
-          flex: 15;
-          border-color: transparent;
-          padding: 7px 7px 8px;
-          line-height: 1.28;
-          resize: both;
-          box-shadow: transparent 0 0 0 1px;
-          transition: background 0.1s ease 0s;
-          overflow-x: hidden;
-          border-radius: 3px;
 
-          &:hover:not(:focus) {
-            background-color: rgb(235, 236, 240);
-          }
-
-          &:focus {
-            background-color: rgb(255,255,255);
-            border: 1px solid #4c9aff;
-            box-shadow: 0 0 0 1px #4c9aff;
-            outline: none;
-          }
-      }
-      &__button{
+      &__button {
         margin-left: 5%;
+      }
+    }
+    &__answer{
+      button{
+        cursor: pointer;
+        border-radius: $buttons-border-radius;
+        text-decoration: none;
+        outline: none;
+        border: solid 1px $gray;
+        display: flex;
+        position: relative;
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+      }
+     #trueAnswer{
+       background-color: red;
+     }
+      #falseAnswer{
+        background-color: forestgreen;
       }
     }
   }
 }
+
 
 

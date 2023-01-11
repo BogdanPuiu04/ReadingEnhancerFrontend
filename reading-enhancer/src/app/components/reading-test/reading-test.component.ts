@@ -2,10 +2,9 @@ import {Component, OnInit, Output, ViewChild} from '@angular/core';
 import {ReadingTestService} from "../../services/reading-test.service";
 import {ReadingText} from "../../models/readingText";
 import {CdTimerComponent} from "angular-cd-timer";
-import {Subscription} from "rxjs";
-import {NavigationStart, Router} from "@angular/router";
+import {Router} from "@angular/router";
 import {browserRefresh} from "../../app.component";
-import {FormBuilder, FormGroup} from "@angular/forms";
+import {FormGroup} from "@angular/forms";
 
 @Component({
   selector: 'app-reading-test',
@@ -45,7 +44,9 @@ export class ReadingTestComponent implements OnInit {
 
   getTextBasedQuestion(): void {
     this.readingService.getText().subscribe((data) => {
-      this.text = data;
+      console.log(data);
+      this.text = data.text;
+      this.words = data.wordCount;
     })
   }
 
@@ -57,7 +58,6 @@ export class ReadingTestComponent implements OnInit {
   }
 
   calculateWordsPerMinute(): void {
-    this.words = this.text.text.split(' ').length;
     this.delay = this.timer.get().minutes * 60 + this.timer.get().seconds;
     this.wpm = Math.floor(this.words / (this.timer.get().minutes * 60 + this.timer.get().seconds) * 60);
   }

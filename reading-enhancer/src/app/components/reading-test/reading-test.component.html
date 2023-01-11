@@ -3,7 +3,7 @@
     <cd-timer [autoStart]="true" [startTime]="0" format="ms" (onStop)="setTime()"
               (onTick)="calculateWordsPerMinute()"></cd-timer>
   </div>
-  <div>{{text.text}}</div>
+  <div [innerHTML]="text.text"></div>
   <app-button buttonText="I have read everything" buttonSize="medium" (click)="stopTimer()"
               [disabledValue]="delay<10"></app-button>
 </div>

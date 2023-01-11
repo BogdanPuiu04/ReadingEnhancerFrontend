@@ -4,18 +4,14 @@
       <mat-expansion-panel *ngFor="let text of texts" id="text">
         <mat-expansion-panel-header>
           <mat-panel-title>
-            {{getFirstTenWords(text.text)}}
+            {{getFirstTenWords(text.text)}}...
           </mat-panel-title>
           <mat-panel-description>
             {{"Edit the text"}}
           </mat-panel-description>
         </mat-expansion-panel-header>
         <div class="change-test__wrapper__texts__edit">
-          <textarea [(ngModel)]="text.text" class="change-test__wrapper__texts__edit__textarea" cdkTextareaAutosize
-                    oninput='this.style.height = "";this.style.height = this.scrollHeight + "px"'></textarea>
-          <div class="change-test__wrapper__texts__edit__textarea__button">
-            <app-button buttonText="Edit Text" buttonSize="medium" (click)="editText(text.id)"></app-button>
-          </div>
+          <app-editable-text [value]="text.text" (valueChange)="saveText( text, $event )"></app-editable-text>
         </div>
         <mat-accordion>
           <mat-expansion-panel *ngFor="let question of text.questionsList">
@@ -25,7 +21,7 @@
             </mat-expansion-panel-header>
             <div class="change-test__wrapper__texts__edit">
               <div class="change-test__wrapper__texts__edit__button">
-                <app-button buttonText="Edit Question" buttonSize="medium" (click)="editText(text.id)"></app-button>
+                <app-editable-text [value]="question.text" (valueChange)="saveQuestion( question, $event )"></app-editable-text>
               </div>
               <div class="change-test__wrapper__texts__edit__button">
                 <app-button buttonText="Add another question" buttonSize="medium"
@@ -38,12 +34,20 @@
                   <mat-panel-title>{{answer.text}}</mat-panel-title>
                   <mat-panel-description>Edit this Answer</mat-panel-description>
                 </mat-expansion-panel-header>
-                <!--                <p>{{answer.text}}</p>-->
-                <app-button buttonText="Edit Answer" buttonSize="medium" (click)="editText(text.id)"></app-button>
+                <app-editable-text [value]="answer.text" (valueChange)="saveAnswer( answer, $event )"></app-editable-text>
+                <div class="change-test__wrapper__texts__answer">
+                <div *ngIf="answer.isCorrect">
+                <button type="button" [textContent]="'Make the answer false'" (click)="changeValueOfAnswer(answer)" id="trueAnswer" class="button"></button>
+                </div>
+                <div *ngIf="!answer.isCorrect">
+                  <button type="button" [textContent]="'Make the true'" (click)="changeValueOfAnswer(answer)" id="falseAnswer" class="button"></button>
+                </div>
+                </div>
               </mat-expansion-panel>
             </mat-accordion>
           </mat-expansion-panel>
         </mat-accordion>
+        <app-button [buttonText]="'Submit the changes'" (click)="submitChanges(text)" [buttonSize]="'medium'" [buttonType]="'secondary'"></app-button>
       </mat-expansion-panel>
     </mat-accordion>
   </div>
