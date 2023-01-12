@@ -4,14 +4,14 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
   selector: 'app-editable-text',
   templateUrl: './editable-text.component.html',
   styleUrls: ['./editable-text.component.scss'],
-  outputs: [ "valueChangeEvents: valueChange" ],
-  inputs: [ "value" ]
+  outputs: ["valueChangeEvents: valueChange"],
+  inputs: ["value"]
 })
 export class EditableTextComponent {
   public isEditing: boolean;
   public pendingValue: string;
-   public value!: string;
-   public valueChangeEvents: EventEmitter<string>;
+  public value!: string;
+  public valueChangeEvents: EventEmitter<string>;
 
   constructor() {
 
@@ -20,24 +20,24 @@ export class EditableTextComponent {
     this.valueChangeEvents = new EventEmitter();
   }
 
-  public cancel() : void {
+  public cancel(): void {
 
     this.isEditing = false;
 
   }
 
 
-  public edit() : void {
+  public edit(): void {
     this.pendingValue = this.value;
     this.isEditing = true;
   }
 
 
-  public processChanges() : void {
+  public processChanges(): void {
 
-    if ( this.pendingValue !== this.value ) {
+    if (this.pendingValue !== this.value && this.pendingValue !== '') {
 
-      this.valueChangeEvents.emit( this.pendingValue );
+      this.valueChangeEvents.emit(this.pendingValue);
 
     }
 

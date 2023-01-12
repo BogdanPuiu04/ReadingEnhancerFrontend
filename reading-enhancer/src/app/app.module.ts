@@ -35,6 +35,7 @@ import {MatExpansionModule} from "@angular/material/expansion";
 import {MatNativeDateModule} from "@angular/material/core";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import { EditableTextComponent } from './components/change-test/editable-text/editable-text.component';
+import {ReadingTestService} from "./services/reading-test.service";
 
 
 @NgModule({

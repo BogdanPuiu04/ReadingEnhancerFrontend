@@ -1,7 +1,7 @@
 <div class="change-test__wrapper">
   <div class="change-test__wrapper__texts">
     <mat-accordion>
-      <mat-expansion-panel *ngFor="let text of texts" id="text">
+      <mat-expansion-panel *ngFor="let text of texts;let i=index" id="text">
         <mat-expansion-panel-header>
           <mat-panel-title>
             {{getFirstTenWords(text.text)}}...
@@ -11,7 +11,10 @@
           </mat-panel-description>
         </mat-expansion-panel-header>
         <div class="change-test__wrapper__texts__edit">
-          <app-editable-text [value]="text.text" (valueChange)="saveText( text, $event )"></app-editable-text>
+          <app-editable-text [value]="text.text" (valueChange)="saveText( text, $event,i )"></app-editable-text>
+          <input [(ngModel)]="newQuestion" (keyup.enter)="addQuestion(text.id,newQuestion,i)">
+          <app-button buttonText="Add another question" buttonSize="medium"
+                      (click)="addQuestion(text.id,newQuestion,i);"></app-button>
         </div>
         <mat-accordion>
           <mat-expansion-panel *ngFor="let question of text.questionsList">
@@ -21,11 +24,11 @@
             </mat-expansion-panel-header>
             <div class="change-test__wrapper__texts__edit">
               <div class="change-test__wrapper__texts__edit__button">
-                <app-editable-text [value]="question.text" (valueChange)="saveQuestion( question, $event )"></app-editable-text>
-              </div>
-              <div class="change-test__wrapper__texts__edit__button">
-                <app-button buttonText="Add another question" buttonSize="medium"
-                            (click)="editText(text.id)"></app-button>
+                <app-editable-text [value]="question.text"
+                                   (valueChange)="saveQuestion( question, $event,i )"></app-editable-text>
+                <input [(ngModel)]="newAnswer" (keyup.enter)="addAnswer(text.id,question.id,newAnswer,i)">
+                <app-button buttonText="Add another answer" buttonSize="medium"
+                            (click)="addAnswer(text.id,question.id ,newAnswer,i);"></app-button>
               </div>
             </div>
             <mat-accordion>
@@ -34,20 +37,25 @@
                   <mat-panel-title>{{answer.text}}</mat-panel-title>
                   <mat-panel-description>Edit this Answer</mat-panel-description>
                 </mat-expansion-panel-header>
-                <app-editable-text [value]="answer.text" (valueChange)="saveAnswer( answer, $event )"></app-editable-text>
+                <app-editable-text [value]="answer.text"
+                                   (valueChange)="saveAnswer( answer, $event,i )"></app-editable-text>
                 <div class="change-test__wrapper__texts__answer">
-                <div *ngIf="answer.isCorrect">
-                <button type="button" [textContent]="'Make the answer false'" (click)="changeValueOfAnswer(answer)" id="trueAnswer" class="button"></button>
-                </div>
-                <div *ngIf="!answer.isCorrect">
-                  <button type="button" [textContent]="'Make the true'" (click)="changeValueOfAnswer(answer)" id="falseAnswer" class="button"></button>
-                </div>
+                  <div *ngIf="answer.isCorrect">
+                    <button type="button" [textContent]="'Make the answer false'"
+                            (click)="changeValueOfAnswer(answer,i)"
+                            id="trueAnswer" class="button"></button>
+                  </div>
+                  <div *ngIf="!answer.isCorrect">
+                    <button type="button" [textContent]="'Make the true'" (click)="changeValueOfAnswer(answer,i)"
+                            id="falseAnswer" class="button"></button>
+                  </div>
                 </div>
               </mat-expansion-panel>
             </mat-accordion>
           </mat-expansion-panel>
         </mat-accordion>
-        <app-button [buttonText]="'Submit the changes'" (click)="submitChanges(text)" [buttonSize]="'medium'" [buttonType]="'secondary'"></app-button>
+        <app-button [buttonText]="'Submit the changes'" (click)="submitChanges(text,i)" [buttonSize]="'medium'"
+                    [buttonType]="'secondary'" [disabledValue]="!isChanged[i]"></app-button>
       </mat-expansion-panel>
     </mat-accordion>
   </div>

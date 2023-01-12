@@ -29,4 +29,15 @@ export class ReadingTestService {
   getAllText(): Observable<AllReadingTextsResponse> {
     return this.http.get<AllReadingTextsResponse>(`${environment.baseUrl}/api/EnhancedText`);
   }
+
+  submitChangedText(readingText: ReadingText): Observable<any>{
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Headers': 'Content-Type',
+      'Access-Control-Allow-Methods': '*'
+    });
+    const body = JSON.stringify(readingText);
+    return this.http.post<any>(`${environment.baseUrl}/api/EnhancedText/ChangeText`, body, {headers: headers});
+  }
 }

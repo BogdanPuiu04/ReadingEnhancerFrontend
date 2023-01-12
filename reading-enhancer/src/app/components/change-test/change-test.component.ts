@@ -3,6 +3,7 @@ import {ReadingText} from "../../models/readingText";
 import {ReadingTestService} from "../../services/reading-test.service";
 import {Question} from "../../models/question";
 import {Answer} from "../../models/answers";
+import {EnhancedTextService} from "../../services/enhanced-text.service";
 
 @Component({
   selector: 'app-change-test',
@@ -12,7 +13,9 @@ import {Answer} from "../../models/answers";
 export class ChangeTestComponent implements OnInit {
 
   @Output() texts: ReadingText[] = [];
-  panelOpenState = false;
+  isChanged: boolean[] = [];
+  newQuestion: string = '';
+  newAnswer: string = '';
 
   constructor(private readingService: ReadingTestService) {
   }
@@ -23,7 +26,10 @@ export class ChangeTestComponent implements OnInit {
 
   getAllTexts(): void {
     this.readingService.getAllText().subscribe((data) => {
-      data.texts.forEach(text => this.texts.push(text));
+      data.texts.forEach(text => {
+        this.texts.push(text);
+        this.isChanged.push(false);
+      });
     });
   }
 
@@ -31,27 +37,69 @@ export class ChangeTestComponent implements OnInit {
     return text.split(' ').slice(0, 10).join(' ');
   }
 
+  // TODO: add change submit and question/answer add
   editText(textId: string): void {
 
   }
 
-  public saveText(text: ReadingText, newName: string): void {
+  public saveText(text: ReadingText, newName: string, index: number): void {
+    this.isChanged[index] = true;
     text.text = newName;
   }
 
-  public saveQuestion(question: Question, newName: string): void {
+  public saveQuestion(question: Question, newName: string, index: number): void {
+    this.isChanged[index] = true;
     question.text = newName;
   }
 
-  public saveAnswer(answer: Answer, newName: string): void {
+  public saveAnswer(answer: Answer, newName: string, index: number): void {
+    this.isChanged[index] = true;
     answer.text = newName;
   }
 
-  changeValueOfAnswer(answer: Answer): void {
+  changeValueOfAnswer(answer: Answer, index: number): void {
+    this.isChanged[index] = true;
     answer.isCorrect = !answer.isCorrect;
   }
 
-  submitChanges(text: ReadingText): void {
-    console.log(text);
+  submitChanges(text: ReadingText, index: number): void {
+    this.readingService.submitChangedText(text).subscribe(() => {
+      this.isChanged[index] = false;
+    });
   }
+
+  addQuestion(textId: string, questionText: string, index: number) {
+    this.texts.forEach(text => {
+      if (text.id == textId) {
+        let q = new Question();
+        q.text = questionText;
+        q.answers = [];
+        q.id = 'not'.repeat(8);
+        text.questionsList.push(q);
+      }
+    });
+    this.isChanged[index] = true;
+    this.newQuestion = '';
+  }
+
+  addAnswer(textId: string, questionId: string, answerText: string, index: number) {
+    console.log(answerText);
+    this.texts.forEach(text => {
+      if (text.id == textId) {
+        text.questionsList.forEach(question => {
+          if (question.id == questionId) {
+            let a = new Answer();
+            a.text = answerText;
+            a.id = 'not'.repeat(8);
+            a.isCorrect = false;
+            question.answers.push(a);
+          }
+        })
+      }
+    })
+    this.isChanged[index] = true;
+    this.newAnswer = '';
+  }
+
+
 }
