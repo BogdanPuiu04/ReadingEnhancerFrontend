@@ -7,7 +7,7 @@
         <br>
         <label>
           <input id="{{answer.id}}" [checked]="options[question.id]" [(ngModel)]="options[question.id]"
-                 type="radio" value="{{answer.isCorrect}}"
+                 type="radio" value="{{answer.id}}"
                  name="option{{question.id}}" [required]="true">
           {{answer.text}}
         </label>

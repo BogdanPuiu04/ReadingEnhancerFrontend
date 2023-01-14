@@ -16,6 +16,7 @@ export class ChangeTestComponent implements OnInit {
   isChanged: boolean[] = [];
   newQuestion: string = '';
   newAnswer: string = '';
+  newText: string = '';
 
   constructor(private readingService: ReadingTestService) {
   }
@@ -83,7 +84,6 @@ export class ChangeTestComponent implements OnInit {
   }
 
   addAnswer(textId: string, questionId: string, answerText: string, index: number) {
-    console.log(answerText);
     this.texts.forEach(text => {
       if (text.id == textId) {
         text.questionsList.forEach(question => {
@@ -99,6 +99,18 @@ export class ChangeTestComponent implements OnInit {
     })
     this.isChanged[index] = true;
     this.newAnswer = '';
+  }
+
+  addNewText(text: string) {
+    let readingText = new ReadingText();
+    readingText.id = 'not'.repeat(8);
+    readingText.text = text;
+    readingText.questionsList = [];
+    this.readingService.submitNewText(readingText).subscribe((data) => {
+        this.texts.push(data);
+      }
+    )
+    this.newText = '';
   }
 
 

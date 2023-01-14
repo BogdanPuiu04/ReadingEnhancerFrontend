@@ -16,13 +16,14 @@ export class ReadingTestService {
               private http: HttpClient,) {
   }
 
+   headers = new HttpHeaders({
+    'Content-Type': 'application/json',
+    'Access-Control-Allow-Origin': '*',
+    'Access-Control-Allow-Headers': 'Content-Type',
+    'Access-Control-Allow-Methods': '*'
+  });
+
   getText(): Observable<ReadingTextResponseModel> {
-    const headers = new HttpHeaders({
-      'Content-Type': 'application/json',
-      'Access-Control-Allow-Origin': '*',
-      'Access-Control-Allow-Headers': 'Content-Type',
-      'Access-Control-Allow-Methods': '*'
-    });
     return this.http.get<ReadingTextResponseModel>(`${environment.baseUrl}/api/EnhancedText/GetRandomText`);
   }
 
@@ -30,14 +31,13 @@ export class ReadingTestService {
     return this.http.get<AllReadingTextsResponse>(`${environment.baseUrl}/api/EnhancedText`);
   }
 
-  submitChangedText(readingText: ReadingText): Observable<any>{
-    const headers = new HttpHeaders({
-      'Content-Type': 'application/json',
-      'Access-Control-Allow-Origin': '*',
-      'Access-Control-Allow-Headers': 'Content-Type',
-      'Access-Control-Allow-Methods': '*'
-    });
+  submitChangedText(readingText: ReadingText): Observable<any> {
     const body = JSON.stringify(readingText);
-    return this.http.post<any>(`${environment.baseUrl}/api/EnhancedText/ChangeText`, body, {headers: headers});
+    return this.http.post<any>(`${environment.baseUrl}/api/EnhancedText/ChangeText`, body, {headers: this.headers});
+  }
+
+  submitNewText(readingText: ReadingText): Observable<ReadingText> {
+    const body = JSON.stringify(readingText);
+    return this.http.post<ReadingText>(`${environment.baseUrl}/api/EnhancedText/AddNewText`, body, {headers: this.headers});
   }
 }

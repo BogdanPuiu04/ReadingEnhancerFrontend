@@ -44,9 +44,7 @@ export class ReadingTestComponent implements OnInit {
 
   getTextBasedQuestion(): void {
     this.readingService.getText().subscribe((data) => {
-      console.log(data);
       this.text = data.text;
-      console.log(data.wordCount);
       this.words = data.wordCount;
     })
   }

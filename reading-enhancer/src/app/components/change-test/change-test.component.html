@@ -58,5 +58,9 @@
                     [buttonType]="'secondary'" [disabledValue]="!isChanged[i]"></app-button>
       </mat-expansion-panel>
     </mat-accordion>
+    <input [(ngModel)]="newText" (keyup.enter)="addNewText(newText)" placeholder="Add a new text"/>
+    <div *ngIf="newText!==''">
+      <app-button [buttonText]="'Add a new text'" buttonSize="medium" (click)="addNewText(newText)"></app-button>
+    </div>
   </div>
 </div>

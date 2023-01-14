@@ -1,6 +1,6 @@
-import {Component, Input, OnInit, Output} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {ReadingText} from "../../../models/readingText";
-import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {ActivatedRoute, Router} from "@angular/router";
 import {HandlerService} from "../../../services/handler.service";
 
@@ -19,6 +19,8 @@ export class QuizComponent implements OnInit {
 
   options: { [key: string]: any[] } = {}
   option: any = [];
+  answers = new Map<string, string>([]);
+
 
   constructor(private formBuilder: FormBuilder,
               private router: Router,
@@ -35,12 +37,21 @@ export class QuizComponent implements OnInit {
 
   onSubmit(): void {
     let keys = Object.values(this.options);
+    let values = Object.keys(this.options);
     let count = 0;
-    keys.forEach(x => {
-      // @ts-ignore
-      if (x === "false")
+    let stringKeys = keys.toString().split(',');
+    let stringValues = values.toString().split(',');
+    //map selected options
+    for (let i = 0; i < keys.length; i++) {
+      this.answers.set(stringValues[i], stringKeys[i])
+    }
+    for (let [key, value] of this.answers.entries()) {
+      let q = this.text.questionsList.filter(question => question.id === key)[0];
+      let answer = q.answers.filter(ans => ans.id === value)[0];
+      if (!answer.isCorrect) {
         count++;
-    });
+      }
+    }
     this.rightAnswers = this.text.questionsList.length - count;
     if (this.form.valid) {
       this.handlerService.updateResults(this.wpm, this.rightAnswers / this.text.questionsList.length * 100);
@@ -58,3 +69,4 @@ export class QuizComponent implements OnInit {
     return keys.length >= this.text.questionsList.length;
   }
 }
+
