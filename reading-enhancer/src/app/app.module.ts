@@ -36,6 +36,7 @@ import {MatNativeDateModule} from "@angular/material/core";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import { EditableTextComponent } from './components/change-test/editable-text/editable-text.component';
 import {ReadingTestService} from "./services/reading-test.service";
+import {MatTableModule} from "@angular/material/table";
 
 
 @NgModule({
@@ -60,24 +61,25 @@ import {ReadingTestService} from "./services/reading-test.service";
     ChangeTestComponent,
     EditableTextComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    MatFormFieldModule,
-    ReactiveFormsModule,
-    InlineSVGModule,
-    HttpClientModule,
-    CdTimerModule,
-    MatRadioModule,
-    FormsModule,
-    MatExpansionModule,
-    BrowserAnimationsModule,
-    BrowserModule,
-    FormsModule,
-    HttpClientModule,
-    MatNativeDateModule,
-    ReactiveFormsModule,
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        MatFormFieldModule,
+        ReactiveFormsModule,
+        InlineSVGModule,
+        HttpClientModule,
+        CdTimerModule,
+        MatRadioModule,
+        FormsModule,
+        MatExpansionModule,
+        BrowserAnimationsModule,
+        BrowserModule,
+        FormsModule,
+        HttpClientModule,
+        MatNativeDateModule,
+        ReactiveFormsModule,
+        MatTableModule,
+    ],
   providers: [{
     provide: APP_INITIALIZER,
     useFactory: appInitializer,

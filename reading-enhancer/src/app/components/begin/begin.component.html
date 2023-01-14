@@ -8,5 +8,32 @@
       <app-button buttonText="Begin!" iconPosition="right" buttonSize="large" (click)="takeTest();"></app-button>
     </div>
     </div>
+    <div class="begin__wrapper__top">
+          <table mat-table [dataSource]="users" class="mat-elevation-z8 users-table">
+
+            <ng-container matColumnDef="readingSpeed">
+              <th mat-header-cell *matHeaderCellDef>Reading Speed</th>
+              <td mat-cell *matCellDef="let user">{{ user.readingSpeed }}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="username">
+              <th mat-header-cell *matHeaderCellDef>Name</th>
+              <td mat-cell *matCellDef="let element">{{ element.name}}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="highScore">
+              <th mat-header-cell *matHeaderCellDef>High Score</th>
+              <td mat-cell *matCellDef="let element">{{ element.highScore }}%</td>
+            </ng-container>
+            <ng-container matColumnDef="placement">
+              <th mat-header-cell *matHeaderCellDef> Placement </th>
+              <td mat-cell *matCellDef="let element; let i = index;">{{i+1}}</td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+          </table>
+    </div>
   </div>
 </div>

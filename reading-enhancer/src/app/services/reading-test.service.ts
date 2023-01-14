@@ -7,6 +7,7 @@ import {environment} from "../../environments/environment";
 import {AllReadingTextsResponse} from "../models/allReadingTextResponse";
 import {ReadingTextResponseModel} from "../models/readingTextResponseModel";
 import {ResultsModel} from "../models/resultsModel";
+import {AllUserHighScores} from "../models/allUserHighscores";
 
 @Injectable({
   providedIn: 'root'
@@ -45,5 +46,9 @@ export class ReadingTestService {
   submitResults(resultsModel: ResultsModel) {
     const body = JSON.stringify(resultsModel);
     return this.http.post<any>(`${environment.baseUrl}/api/User/SubmitResults`, body, {headers: this.headers});
+  }
+
+  getTopHighScores(): Observable<AllUserHighScores>{
+    return this.http.get<AllUserHighScores>(`${environment.baseUrl}/api/User/GetUsersHighScore`);
   }
 }

@@ -1,6 +1,6 @@
 @import '../../../assets/_variables.scss';
 
-.begin{
+.begin {
   font-family: $font-family;
   box-shadow: 0 20px 50px rgba(31, 29, 29, 0.7);
   height: 90%;
@@ -31,12 +31,13 @@
     //  padding-left: 80px;
     //}
 
-    &__content{
+    &__content {
       width: 90%;
       height: 90%;
       margin: auto;
       justify-content: center;
-      &__title{
+
+      &__title {
         text-transform: capitalize;
         color: $dark-gray;
         font-size: $font-size-regular-medium-large;
@@ -45,16 +46,50 @@
         margin-top: 5px;
       }
 
-      &__message{
+      &__message {
         font-size: $font-size-regular-xxx-large;
         color: $gray-tint-20;
       }
-      &__button{
+
+      &__button {
         display: flex;
         font-size: $font-size-regular-xxx-large;
         color: $gray-tint-20;
         justify-content: center;
         margin-bottom: 3%;
+      }
+    }
+
+    &__top {
+      .users-table {
+        width: 50%;
+      }
+
+      .mat-column-username {
+
+        border-right: 1px solid currentColor;
+        border-left: 1px solid currentColor;
+        padding-right: 2%;
+        text-align: center;
+      }
+
+      .mat-column-placement{
+        border-right: 1px solid currentColor;
+        border-left: 1px solid currentColor;
+        padding-right: 5%;
+        text-align: center;
+      }
+
+      .mat-column-readingSpeed {
+
+        padding-right: 2%;
+        text-align: center;
+      }
+
+      .mat-column-highScore {
+        width: 30%;
+        text-align: center;
+        font-weight: bold;
       }
     }
   }
