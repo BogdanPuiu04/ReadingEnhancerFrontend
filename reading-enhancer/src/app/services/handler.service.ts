@@ -50,4 +50,26 @@ export class HandlerService {
     this.basicSpeed.next(readingSpeed);
   }
 
+  getHighScore(): number {
+    const highScore = JSON.parse(localStorage['userInfo']);
+    return highScore.highScore;
+  }
+
+  getReadingSpeed(): number {
+    const readingSpeed = JSON.parse(localStorage['userInfo']);
+    return readingSpeed.readingSpeed;
+  }
+
+  updateHighScore(highScore: number): any {
+    const user = this.getUserFromStorage();
+    user.highScore = highScore;
+    localStorage.setItem('userInfo', JSON.stringify(user));
+  }
+
+  updateReadingSpeed(readingSpeed: number): any {
+    const user = this.getUserFromStorage();
+    user.readingSpeed = readingSpeed;
+    localStorage.setItem('userInfo', JSON.stringify(user));
+  }
+
 }

@@ -1,3 +1,8 @@
-.results{
-  background: #5a656b;
+.results {
+  //background: #5a656b;
+  display: flex;
+  flex-direction: column;
+  &__submit {
+    justify-content: center;
+  }
 }

@@ -50,7 +50,7 @@ export class ReadingTestComponent implements OnInit {
   }
 
   stopTimer(): void {
-    if (this.delay > 10) {
+    if (this.delay > 9) {
       this.timer.stop();
       this.isRead = true;
     }

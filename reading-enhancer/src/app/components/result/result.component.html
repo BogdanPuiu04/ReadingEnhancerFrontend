@@ -1,7 +1,15 @@
 <div class="results">
   <div class="results__wrapper">
-<p>Accuracy: {{results}}%</p>
-<p>WPM :{{readingSpeed}}</p>
+    <p>Accuracy: {{results}}%</p>
+    <p>WPM :{{readingSpeed}}</p>
+  </div>
+  <div class="results__submit">
+    <div class="results__submit__currentHighScore">
+      <p>Your current highscore: {{this.highScore}} and reading speed : {{this.wpm}} words/minute</p>
+    </div>
+    <app-button [buttonText]="'Submit your results'" [disabledValue]="readingSpeed===0" buttonSize="medium"
+                buttonType="secondary"
+                (click)="submitResults()"></app-button>
   </div>
 </div>
 

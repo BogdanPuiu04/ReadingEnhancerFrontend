@@ -6,6 +6,7 @@ import {ReadingText} from "../models/readingText";
 import {environment} from "../../environments/environment";
 import {AllReadingTextsResponse} from "../models/allReadingTextResponse";
 import {ReadingTextResponseModel} from "../models/readingTextResponseModel";
+import {ResultsModel} from "../models/resultsModel";
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +17,7 @@ export class ReadingTestService {
               private http: HttpClient,) {
   }
 
-   headers = new HttpHeaders({
+  headers = new HttpHeaders({
     'Content-Type': 'application/json',
     'Access-Control-Allow-Origin': '*',
     'Access-Control-Allow-Headers': 'Content-Type',
@@ -39,5 +40,10 @@ export class ReadingTestService {
   submitNewText(readingText: ReadingText): Observable<ReadingText> {
     const body = JSON.stringify(readingText);
     return this.http.post<ReadingText>(`${environment.baseUrl}/api/EnhancedText/AddNewText`, body, {headers: this.headers});
+  }
+
+  submitResults(resultsModel: ResultsModel) {
+    const body = JSON.stringify(resultsModel);
+    return this.http.post<any>(`${environment.baseUrl}/api/User/SubmitResults`, body, {headers: this.headers});
   }
 }
