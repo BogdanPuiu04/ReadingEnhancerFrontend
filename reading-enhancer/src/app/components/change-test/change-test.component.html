@@ -69,4 +69,31 @@
       <app-button [buttonText]="'Add a new text'" buttonSize="medium" (click)="addNewText(newText)"></app-button>
     </div>
   </div>
+  <div class="change-test__wrapper__users">
+    <mat-accordion>
+      <mat-expansion-panel id="user">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Manage users' rights
+          </mat-panel-title>
+          <mat-panel-description> Edit the users</mat-panel-description>
+        </mat-expansion-panel-header>
+        <div class="change-test__wrapper__users__admins" *ngFor="let user of users">
+          {{user.name}} {{user.lastName}}- {{user.username}}
+          <div class="change-test__wrapper__users__admins__buttons">
+          <div *ngIf="!user.isAdmin">
+            <button mat-raised-button color="primary" (click)="changeAdmin(user.id)" class="adminBtn">Make this user admin</button>
+            <button mat-raised-button disabled class="adminBtn">Remove admin privileges</button>
+          </div>
+
+          <div *ngIf="user.isAdmin">
+            <button mat-raised-button disabled class="adminBtn">Make this user admin</button>
+            <button mat-raised-button color="primary" (click)="changeAdmin(user.id)" class="adminBtn">Remove admin privileges</button>
+          </div>
+          </div>
+
+        </div>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </div>
 </div>

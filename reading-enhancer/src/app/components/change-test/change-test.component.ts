@@ -3,7 +3,7 @@ import {ReadingText} from "../../models/readingText";
 import {ReadingTestService} from "../../services/reading-test.service";
 import {Question} from "../../models/question";
 import {Answer} from "../../models/answers";
-import {EnhancedTextService} from "../../services/enhanced-text.service";
+import {UserResponse} from "../../models/allUsersResponseModel";
 
 @Component({
   selector: 'app-change-test',
@@ -16,13 +16,15 @@ export class ChangeTestComponent implements OnInit {
   isChanged: boolean[] = [];
   newQuestion: string = '';
   newAnswer: string = '';
-  newText: string = '';
+  newText: string = ''
+  users: UserResponse[] = [];
 
   constructor(private readingService: ReadingTestService) {
   }
 
   ngOnInit(): void {
     this.getAllTexts();
+    this.getAllUsers();
   }
 
   getAllTexts(): void {
@@ -31,6 +33,14 @@ export class ChangeTestComponent implements OnInit {
         this.texts.push(text);
         this.isChanged.push(false);
       });
+    });
+  }
+
+  getAllUsers(): void {
+    this.readingService.getAllUsers().subscribe((data) => {
+      data.allUsers.forEach(user => {
+        this.users.push(user);
+      })
     });
   }
 
@@ -161,5 +171,18 @@ export class ChangeTestComponent implements OnInit {
     question.answers.splice(index, 1);
     text.questionsList[indexQuestion] = question;
     this.texts[indexText] = text;
+  }
+
+  changeAdmin(userId: string) {
+    this.readingService.changeAdmin(userId).subscribe(() => {
+      this.changeAdminProprietyInPage(userId);
+    })
+  }
+
+  changeAdminProprietyInPage(userId: string) {
+    const user = this.users.filter(user => user.id === userId)[0];
+    const index = this.users.indexOf(user);
+    user.isAdmin = !user.isAdmin;
+    this.users[index] = user;
   }
 }

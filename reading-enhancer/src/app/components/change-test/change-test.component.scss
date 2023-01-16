@@ -33,5 +33,20 @@
       }
     }
   }
+
+  &__users{
+    &__admins{
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+
+      &__buttons{
+
+        .adminBtn{
+          margin: 1%
+        }
+      }
+    }
+  }
 }
 

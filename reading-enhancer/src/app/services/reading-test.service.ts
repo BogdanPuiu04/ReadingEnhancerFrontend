@@ -10,6 +10,7 @@ import {ResultsModel} from "../models/resultsModel";
 import {AllUserHighScores} from "../models/allUserHighscores";
 import {DeleteQuestionModel} from "../models/deleteQuestionModel";
 import {DeleteAnswerModel} from "../models/DeleteAnswerModel";
+import {AllUsersResponseModel} from "../models/allUsersResponseModel";
 
 @Injectable({
   providedIn: 'root'
@@ -64,17 +65,26 @@ export class ReadingTestService {
       textId: textId,
       questionId: questionId
     };
-    const body= JSON.stringify(questionModel)
+    const body = JSON.stringify(questionModel)
     return this.http.post<string>(`${environment.baseUrl}/api/EnhancedText/DeleteQuestion`, body, {headers: this.headers});
   }
 
-  deleteAnswer(textId : string, questionId: string, answerId: string){
-    let answerModel : DeleteAnswerModel= {
+  deleteAnswer(textId: string, questionId: string, answerId: string) {
+    let answerModel: DeleteAnswerModel = {
       textId: textId,
       questionId: questionId,
       answerId: answerId
     }
-    const body= JSON.stringify(answerModel);
+    const body = JSON.stringify(answerModel);
     return this.http.post<string>(`${environment.baseUrl}/api/EnhancedText/DeleteAnswer`, body, {headers: this.headers});
+  }
+
+  getAllUsers(): Observable<AllUsersResponseModel> {
+    return this.http.get<AllUsersResponseModel>(`${environment.baseUrl}/api/User/GetAllUsers`);
+  }
+
+  changeAdmin(userId: string): Observable<any>{
+    const body= JSON.stringify(userId);
+    return this.http.post(`${environment.baseUrl}/api/User/ChangeAdminRights`,body,{headers:this.headers});
   }
 }
