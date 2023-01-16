@@ -66,6 +66,7 @@ export class ChangeTestComponent implements OnInit {
   submitChanges(text: ReadingText, index: number): void {
     this.readingService.submitChangedText(text).subscribe(() => {
       this.isChanged[index] = false;
+      window.location.reload();
     });
   }
 
@@ -113,5 +114,52 @@ export class ChangeTestComponent implements OnInit {
     this.newText = '';
   }
 
+  deleteText(textId: string) {
+    this.readingService.deleteText(textId).subscribe(() => {
+      let removedText = this.texts.filter(text => text.id === textId)[0];
+      const index = this.texts.indexOf(removedText);
+      this.texts.splice(index, 1);
+    })
+  }
 
+  deleteQuestion(textId: string, questionId: string) {
+    if (!questionId.includes('not')) {
+      this.readingService.deleteQuestion(textId, questionId).subscribe(() => {
+        this.removeQuestion(textId, questionId);
+      })
+    } else {
+      this.removeQuestion(textId, questionId);
+    }
+  }
+
+  deleteAnswer(textId: string, questionId: string, answerId: string) {
+    if (!answerId.includes('not')) {
+      this.readingService.deleteAnswer(textId, questionId, answerId).subscribe(() => {
+        this.removeAnswer(textId, questionId, answerId);
+      })
+    } else {
+      this.removeAnswer(textId, questionId, answerId);
+    }
+  }
+
+  removeQuestion(textId: string, questionId: string) {
+    let text = this.texts.filter(text => text.id === textId)[0];
+    let indexText = this.texts.indexOf(text);
+    let removedQuestion = text.questionsList.filter(q => q.id === questionId)[0];
+    const index = text.questionsList.indexOf(removedQuestion);
+    text.questionsList.splice(index, 1);
+    this.texts[indexText] = text;
+  }
+
+  removeAnswer(textId: string, questionId: string, answerId: string) {
+    const text = this.texts.filter(text => text.id === textId)[0];
+    const indexText = this.texts.indexOf(text);
+    const question = text.questionsList.filter(q => q.id === questionId)[0];
+    const indexQuestion = text.questionsList.indexOf(question);
+    const removedAnswer = question.answers.filter(a => a.id === answerId)[0];
+    const index = question.answers.indexOf(removedAnswer);
+    question.answers.splice(index, 1);
+    text.questionsList[indexQuestion] = question;
+    this.texts[indexText] = text;
+  }
 }

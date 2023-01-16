@@ -8,6 +8,8 @@ import {AllReadingTextsResponse} from "../models/allReadingTextResponse";
 import {ReadingTextResponseModel} from "../models/readingTextResponseModel";
 import {ResultsModel} from "../models/resultsModel";
 import {AllUserHighScores} from "../models/allUserHighscores";
+import {DeleteQuestionModel} from "../models/deleteQuestionModel";
+import {DeleteAnswerModel} from "../models/DeleteAnswerModel";
 
 @Injectable({
   providedIn: 'root'
@@ -48,7 +50,31 @@ export class ReadingTestService {
     return this.http.post<any>(`${environment.baseUrl}/api/User/SubmitResults`, body, {headers: this.headers});
   }
 
-  getTopHighScores(): Observable<AllUserHighScores>{
+  getTopHighScores(): Observable<AllUserHighScores> {
     return this.http.get<AllUserHighScores>(`${environment.baseUrl}/api/User/GetUsersHighScore`);
+  }
+
+  deleteText(textId: string): Observable<any> {
+    const body = JSON.stringify(textId);
+    return this.http.post<any>(`${environment.baseUrl}/api/EnhancedText/DeleteText`, body, {headers: this.headers});
+  }
+
+  deleteQuestion(textId: string, questionId: string): Observable<any> {
+    let questionModel: DeleteQuestionModel = {
+      textId: textId,
+      questionId: questionId
+    };
+    const body= JSON.stringify(questionModel)
+    return this.http.post<string>(`${environment.baseUrl}/api/EnhancedText/DeleteQuestion`, body, {headers: this.headers});
+  }
+
+  deleteAnswer(textId : string, questionId: string, answerId: string){
+    let answerModel : DeleteAnswerModel= {
+      textId: textId,
+      questionId: questionId,
+      answerId: answerId
+    }
+    const body= JSON.stringify(answerModel);
+    return this.http.post<string>(`${environment.baseUrl}/api/EnhancedText/DeleteAnswer`, body, {headers: this.headers});
   }
 }

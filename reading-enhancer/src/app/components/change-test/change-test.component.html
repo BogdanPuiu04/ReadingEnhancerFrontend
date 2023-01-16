@@ -15,6 +15,7 @@
           <input [(ngModel)]="newQuestion" (keyup.enter)="addQuestion(text.id,newQuestion,i)">
           <app-button buttonText="Add another question" buttonSize="medium"
                       (click)="addQuestion(text.id,newQuestion,i);"></app-button>
+          <button mat-raised-button color="warn" (click)="deleteText(text.id);">Delete text</button>
         </div>
         <mat-accordion>
           <mat-expansion-panel *ngFor="let question of text.questionsList">
@@ -29,6 +30,8 @@
                 <input [(ngModel)]="newAnswer" (keyup.enter)="addAnswer(text.id,question.id,newAnswer,i)">
                 <app-button buttonText="Add another answer" buttonSize="medium"
                             (click)="addAnswer(text.id,question.id ,newAnswer,i);"></app-button>
+                <button mat-raised-button color="warn" (click)="deleteQuestion(text.id,question.id);">Delete question
+                </button>
               </div>
             </div>
             <mat-accordion>
@@ -49,6 +52,9 @@
                     <button type="button" [textContent]="'Make the true'" (click)="changeValueOfAnswer(answer,i)"
                             id="falseAnswer" class="button"></button>
                   </div>
+                  <button mat-raised-button color="warn" (click)="deleteAnswer(text.id,question.id,answer.id);">Delete
+                    answer
+                  </button>
                 </div>
               </mat-expansion-panel>
             </mat-accordion>

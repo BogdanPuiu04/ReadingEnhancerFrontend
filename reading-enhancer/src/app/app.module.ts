@@ -37,6 +37,7 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import { EditableTextComponent } from './components/change-test/editable-text/editable-text.component';
 import {ReadingTestService} from "./services/reading-test.service";
 import {MatTableModule} from "@angular/material/table";
+import {MatButtonModule} from "@angular/material/button";
 
 
 @NgModule({
@@ -79,6 +80,7 @@ import {MatTableModule} from "@angular/material/table";
         MatNativeDateModule,
         ReactiveFormsModule,
         MatTableModule,
+        MatButtonModule,
     ],
   providers: [{
     provide: APP_INITIALIZER,
