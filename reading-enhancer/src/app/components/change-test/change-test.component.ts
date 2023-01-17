@@ -178,12 +178,12 @@ export class ChangeTestComponent implements OnInit {
 
   changeAdmin(userId: string) {
     this.readingService.changeAdmin(userId).subscribe(data => {
-        if (data.succeed) {
+        if (data.isSuccessful) {
           this.changeAdminProprietyInPage(userId);
         }
       },
       error => {
-        this.adminError = error.error.Errors[0];
+        this.adminError = error.error.Errors[0]
       })
   }
 

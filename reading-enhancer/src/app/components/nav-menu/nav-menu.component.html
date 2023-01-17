@@ -1,15 +1,22 @@
 <nav class="menu">
+
   <app-button buttonType="secondary" buttonSize="medium" buttonText="Home" iconPosition="right"
               (click)="goHome()" [iconLink]="'assets/home.svg'"></app-button>
+
   <app-button buttonType="secondary" buttonSize="medium" buttonText="Enhance a webpage" iconPosition="right"
               (click)="goToWebpage()" [iconLink]="'assets/enhance-webpage.svg'"></app-button>
+
   <app-button buttonType="secondary" buttonSize="medium" buttonText="Minigame" iconPosition="right"
               (click)="goToTest()" [iconLink]="'assets/minigame.svg'"></app-button>
+
   <div *ngIf="isAdmin">
     <app-button buttonType="secondary" buttonSize="medium" buttonText="Change Tests"
                 (click)="goToChangeTest()" [iconPosition]="'right'" [iconLink]="'assets/tests.svg'"></app-button>
   </div>
+
+
   <app-button buttonType="secondary" buttonSize="medium" buttonText="Logout" iconPosition="right"
               (click)="logout()" [iconLink]="'assets/logout.svg'"></app-button>
   <div id="userName">{{name}}</div>
+
 </nav>

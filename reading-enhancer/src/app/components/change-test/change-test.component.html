@@ -44,13 +44,13 @@
                                    (valueChange)="saveAnswer( answer, $event,i )"></app-editable-text>
                 <div class="change-test__wrapper__texts__answer">
                   <div *ngIf="answer.isCorrect">
-                    <button type="button" [textContent]="'Make the answer false'"
+                    <button mat-raised-button color="warn" type="button" [textContent]="'Make the answer false'"
                             (click)="changeValueOfAnswer(answer,i)"
-                            id="trueAnswer" class="button"></button>
+                             class="button"></button>
                   </div>
                   <div *ngIf="!answer.isCorrect">
-                    <button type="button" [textContent]="'Make the true'" (click)="changeValueOfAnswer(answer,i)"
-                            id="falseAnswer" class="button"></button>
+                    <button mat-raised-button type="button" [textContent]="'Make the answer true'" (click)="changeValueOfAnswer(answer,i)"
+                            id="falseAnswer" class="button" color="warn"></button>
                   </div>
                   <button mat-raised-button color="warn" (click)="deleteAnswer(text.id,question.id,answer.id);">Delete
                     answer
