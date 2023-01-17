@@ -12,8 +12,9 @@
         margin-left: 5%;
       }
     }
-    &__answer{
-      button{
+
+    &__answer {
+      button {
         cursor: pointer;
         border-radius: $buttons-border-radius;
         text-decoration: none;
@@ -25,26 +26,35 @@
         justify-content: center;
         align-items: center;
       }
-     #trueAnswer{
-       background-color: red;
-     }
-      #falseAnswer{
+
+      #trueAnswer {
+        background-color: red;
+      }
+
+      #falseAnswer {
         background-color: forestgreen;
       }
     }
   }
 
-  &__users{
-    &__admins{
+  &__users {
+    &__admins {
       display: flex;
       flex-direction: column;
       justify-content: space-evenly;
 
-      &__buttons{
+      &__buttons {
 
-        .adminBtn{
+        .adminBtn {
           margin: 1%
         }
+      }
+
+      &__errors {
+        margin-top: 10px;
+        font-size: $font-size-regular;
+        font-family: $font-family;
+        color: $error-red;
       }
     }
   }

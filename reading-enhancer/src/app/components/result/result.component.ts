@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {HandlerService} from "../../services/handler.service";
 import {ReadingTestService} from "../../services/reading-test.service";
 import {ResultsModel} from "../../models/resultsModel";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-result',
@@ -14,9 +15,11 @@ export class ResultComponent implements OnInit {
   results!: number;
   highScore!: number
   wpm!: number
+  isSubmitted: boolean = false;
 
   constructor(private handlerService: HandlerService,
-              private readingService: ReadingTestService) {
+              private readingService: ReadingTestService,
+              private router: Router) {
   }
 
   ngOnInit(): void {
@@ -27,7 +30,7 @@ export class ResultComponent implements OnInit {
   }
 
   submitResults(): void {
-    if (this.readingSpeed > 0) {
+    if (this.readingSpeed > 0 && !this.isSubmitted) {
       let resultsModel: ResultsModel = {
         readingSpeed: this.readingSpeed,
         highScore: this.results
@@ -37,6 +40,7 @@ export class ResultComponent implements OnInit {
         this.handlerService.updateReadingSpeed(this.results);
         this.highScore = this.results;
         this.wpm = this.readingSpeed;
+        this.isSubmitted = true;
       });
     }
   }

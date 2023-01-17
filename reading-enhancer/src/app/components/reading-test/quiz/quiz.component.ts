@@ -54,7 +54,7 @@ export class QuizComponent implements OnInit {
     }
     this.rightAnswers = this.text.questionsList.length - count;
     if (this.form.valid) {
-      this.handlerService.updateResults(this.wpm, this.rightAnswers / this.text.questionsList.length * 100);
+      this.handlerService.updateResults(this.wpm, Math.round((this.rightAnswers / this.text.questionsList.length * 100) * 100) / 100);
       this.router.navigate(['results']);
     }
   }

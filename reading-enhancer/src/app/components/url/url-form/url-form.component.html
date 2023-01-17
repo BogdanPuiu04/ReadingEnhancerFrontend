@@ -1,17 +1,19 @@
 <form class="url_form" [formGroup]='urlForm' (ngSubmit)="onSubmit()">
   <div class="url-form__input">
-    <app-input [formGroup]='urlForm' inputType="text" label="Enhance a webpage" [controlName]="'enhancedWebpage'"></app-input>
+    <app-input [formGroup]='urlForm' inputType="text" label="Enhance a webpage"
+               [controlName]="'enhancedWebpage'"></app-input>
   </div>
   <div class="url_form__actions">
     <div class="url_form__actions__button">
-      <app-button [disabledValue]="!urlForm.valid" buttonText="Enhance!" iconPosition="right"
-                  buttonSize="large"></app-button>
+      <app-button [disabledValue]="!urlForm.valid" buttonText="Enhance!" buttonSize="large" [iconPosition]="'right'"
+                  [iconLink]="'assets/enhance.svg'"></app-button>
     </div>
   </div>
 </form>
 
 <div class="enhancedPage">
-    <app-button (clickBtn)="openModal('webpage-modal')" buttonText="View Page" buttonSize="medium" [disabledValue]="!webpage"></app-button>
+  <app-button (clickBtn)="openModal('webpage-modal')" buttonText="View Page" buttonSize="medium"
+              [disabledValue]="!webpage" [iconPosition]="'right'" [iconLink]="'assets/view-page.svg'"></app-button>
 </div>
 
 <app-modal id="webpage-modal">

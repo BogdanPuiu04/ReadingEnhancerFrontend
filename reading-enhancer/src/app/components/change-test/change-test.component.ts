@@ -18,6 +18,7 @@ export class ChangeTestComponent implements OnInit {
   newAnswer: string = '';
   newText: string = ''
   users: UserResponse[] = [];
+  adminError: string[] = [];
 
   constructor(private readingService: ReadingTestService) {
   }
@@ -74,10 +75,12 @@ export class ChangeTestComponent implements OnInit {
   }
 
   submitChanges(text: ReadingText, index: number): void {
-    this.readingService.submitChangedText(text).subscribe(() => {
-      this.isChanged[index] = false;
-      window.location.reload();
-    });
+    if (this.isChanged[index]) {
+      this.readingService.submitChangedText(text).subscribe(() => {
+        this.isChanged[index] = false;
+        window.location.reload();
+      });
+    }
   }
 
   addQuestion(textId: string, questionText: string, index: number) {
@@ -174,9 +177,14 @@ export class ChangeTestComponent implements OnInit {
   }
 
   changeAdmin(userId: string) {
-    this.readingService.changeAdmin(userId).subscribe(() => {
-      this.changeAdminProprietyInPage(userId);
-    })
+    this.readingService.changeAdmin(userId).subscribe(data => {
+        if (data.succeed) {
+          this.changeAdminProprietyInPage(userId);
+        }
+      },
+      error => {
+        this.adminError = error.error.Errors[0];
+      })
   }
 
   changeAdminProprietyInPage(userId: string) {
@@ -185,4 +193,5 @@ export class ChangeTestComponent implements OnInit {
     user.isAdmin = !user.isAdmin;
     this.users[index] = user;
   }
+
 }

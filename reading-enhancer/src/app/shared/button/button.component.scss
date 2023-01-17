@@ -45,9 +45,10 @@
     color: $white;
     transition: background-color 0.5s ease-out 1ms;
 
-    ::ng-deep svg {
+     svg {
       path {
         stroke: $white;
+        font-size: $font-size-regular-extra-large;
       }
     }
   }
@@ -58,13 +59,17 @@
   &--secondary {
     background-color: $gray-tint-10;
     color: $white-gray;
-
-    ::ng-deep svg {
+    transition: background-color 0.5s ease-out 1ms;
+     svg {
       path {
-        stroke: $gray-tint-10;
+        stroke: $white;
+        font-size: $font-size-regular-extra-large;
       }
     }
 
+  }
+  &--secondary:hover{
+    background-color: #1d2224;
   }
 
   &--disabled {

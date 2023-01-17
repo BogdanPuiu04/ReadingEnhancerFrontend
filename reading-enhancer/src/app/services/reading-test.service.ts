@@ -11,6 +11,7 @@ import {AllUserHighScores} from "../models/allUserHighscores";
 import {DeleteQuestionModel} from "../models/deleteQuestionModel";
 import {DeleteAnswerModel} from "../models/DeleteAnswerModel";
 import {AllUsersResponseModel} from "../models/allUsersResponseModel";
+import {AppResponse} from "../models/appResponse";
 
 @Injectable({
   providedIn: 'root'
@@ -83,8 +84,8 @@ export class ReadingTestService {
     return this.http.get<AllUsersResponseModel>(`${environment.baseUrl}/api/User/GetAllUsers`);
   }
 
-  changeAdmin(userId: string): Observable<any>{
+  changeAdmin(userId: string): Observable<AppResponse>{
     const body= JSON.stringify(userId);
-    return this.http.post(`${environment.baseUrl}/api/User/ChangeAdminRights`,body,{headers:this.headers});
+    return this.http.post<AppResponse>(`${environment.baseUrl}/api/User/ChangeAdminRights`,body,{headers:this.headers});
   }
 }

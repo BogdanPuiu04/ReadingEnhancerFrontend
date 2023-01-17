@@ -8,12 +8,13 @@
     (keydown.meta.enter)="processChanges()"
     (keydown.escape)="cancel()"
   />
-  <button (click)="processChanges()" id="save-button">
+  <button (click)="processChanges()" id="save-button"
+  mat-raised-button color="accent">
     Save
   </button>
   <a
     (click)="cancel()"
-    (keydown.Enter)="cancel()"
+    (keydown.escape)="cancel()"
     tabindex="0">
     Cancel
   </a>

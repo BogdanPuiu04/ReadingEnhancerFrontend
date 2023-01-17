@@ -85,13 +85,14 @@
             <button mat-raised-button color="primary" (click)="changeAdmin(user.id)" class="adminBtn">Make this user admin</button>
             <button mat-raised-button disabled class="adminBtn">Remove admin privileges</button>
           </div>
-
           <div *ngIf="user.isAdmin">
             <button mat-raised-button disabled class="adminBtn">Make this user admin</button>
             <button mat-raised-button color="primary" (click)="changeAdmin(user.id)" class="adminBtn">Remove admin privileges</button>
           </div>
           </div>
-
+        </div>
+        <div class="change-test__wrapper__users__admins__errors" *ngIf="adminError.length!==0" >
+          {{adminError}}
         </div>
       </mat-expansion-panel>
     </mat-accordion>
