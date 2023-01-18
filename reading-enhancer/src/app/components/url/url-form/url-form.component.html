@@ -1,22 +1,27 @@
 <form class="url_form" [formGroup]='urlForm' (ngSubmit)="onSubmit()">
-  <div class="url-form__input">
+  <div class="url_form__input">
     <app-input [formGroup]='urlForm' inputType="text" label="Enhance a webpage"
                [controlName]="'enhancedWebpage'"></app-input>
+    <div class="url_form__input__errorMessage">
+      {{this.errorMessage}}
+    </div>
   </div>
   <div class="url_form__actions">
     <div class="url_form__actions__button">
       <app-button [disabledValue]="!urlForm.valid" buttonText="Enhance!" buttonSize="large" [iconPosition]="'right'"
                   [iconLink]="'assets/enhance.svg'"></app-button>
+      <div class="spinner-border m-1" role="status" *ngIf="btnClicked && !webpage">
+      </div>
     </div>
   </div>
 </form>
 
-<div class="enhancedPage">
+<div class="enhancedPage" *ngIf="webpage">
   <app-button (clickBtn)="openModal('webpage-modal')" buttonText="View Page" buttonSize="medium"
-              [disabledValue]="!webpage" [iconPosition]="'right'" [iconLink]="'assets/view-page.svg'"></app-button>
+              [disabledValue]="!webpage" [iconPosition]="'right'" ></app-button>
 </div>
 
 <app-modal id="webpage-modal">
   <div id="enhanced-text" [innerHTML]="webpage"></div>
-  <app-button (clickBtn)="closeModal('webpage-modal')" buttonText="Close"></app-button>
+  <app-button (clickBtn)="closeModal('webpage-modal')" buttonText="Close" buttonSize="medium"></app-button>
 </app-modal>

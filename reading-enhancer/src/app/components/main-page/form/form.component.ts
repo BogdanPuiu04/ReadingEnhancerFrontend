@@ -12,6 +12,7 @@ import {EnhancedTextService} from "../../../services/enhanced-text.service";
 export class FormComponent implements OnInit {
   form !: FormGroup;
   text !: string;
+  errorMessage!: string;
 
   constructor(private formBuilder: FormBuilder,
               private textService: EnhancedTextService) {
@@ -33,10 +34,10 @@ export class FormComponent implements OnInit {
   enhanceText(textToBeConverted: string) {
     this.textService.enhanceText(textToBeConverted).subscribe({
       next: (res) => {
-        this.text= res;
+        this.text = res;
       },
-      error : (e) => {
-        console.log(e);
+      error: (e) => {
+        this.errorMessage = e.error.Errors[0];
       }
     });
   }

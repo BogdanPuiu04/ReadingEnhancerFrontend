@@ -10,7 +10,7 @@
       margin-top: 10px;
       font-size: $font-size-regular;
       font-family: $font-family;
-      color: $orange;
+      color: $error-red;
     }
   }
 
@@ -32,6 +32,7 @@
 
     &__button {
       margin-top: 15px;
+      margin-bottom: 2%;
       flex-grow: 1;
       display: flex;
       justify-content: flex-end;

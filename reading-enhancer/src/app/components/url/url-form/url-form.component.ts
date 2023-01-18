@@ -11,6 +11,8 @@ import {ModalService} from "../../../services/modal.service";
 export class UrlFormComponent implements OnInit {
   urlForm !: FormGroup;
   webpage !: string;
+  errorMessage !: string;
+  btnClicked!: boolean;
 
   constructor(private formBuilder: FormBuilder,
               private textService: EnhancedTextService,
@@ -21,10 +23,12 @@ export class UrlFormComponent implements OnInit {
     this.urlForm = this.formBuilder.group({
       enhancedWebpage: new FormControl(this.webpage)
     })
+    this.btnClicked = false;
   }
 
   onSubmit() {
     this.enhanceWebpage(this.urlForm.value.enhancedWebpage);
+    this.btnClicked = true;
   }
 
   enhanceWebpage(webpageToBeConverted: string) {
@@ -33,7 +37,7 @@ export class UrlFormComponent implements OnInit {
         this.webpage = res;
       },
       error: (e) => {
-        console.log(e);
+        this.errorMessage = e.error.Errors[0];
       }
     })
   }
