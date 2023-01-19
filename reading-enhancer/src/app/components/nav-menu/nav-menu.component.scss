@@ -1,7 +1,22 @@
+
 .menu{
   display: flex;
   flex-direction: row;
-  padding: 5px;
-  margin: 10px;
+  width: 95%;
   justify-content: space-around;
 }
+#userName{
+  color: white;
+}
+
+
+.mybtn{
+  color: white;
+}
+.navbar navbar-expand-lg navbar-dark bg-dark{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+

@@ -2,13 +2,11 @@
 
 .begin {
   font-family: $font-family;
-  box-shadow: 0 20px 50px rgba(31, 29, 29, 0.7);
-  height: 90%;
+  height: 50%;
   width: 90%;
   margin: auto;
   display: flex;
   //flex-direction: column;
-  background-color: $gray;
   //&__image {
   //  width: 56%;
   //  height: 100%;
@@ -20,13 +18,14 @@
 
   &__wrapper {
     width: 80%;
-    height: 80%;
-    margin: 10%;
+    height: 100%;
+    margin: 10% 10% 5%;
     display: flex;
     justify-content: center;
     flex-direction: column;
-    background-color: $white;
-
+    background-color: #FAF9F6;
+    border-radius: 50px;
+    box-shadow: 10px 10px 50px rgba(31, 29, 29, 0.7);
     //&__image{
     //  padding-left: 80px;
     //}
@@ -51,18 +50,19 @@
         color: $gray-tint-20;
       }
 
-      &__button {
-        display: flex;
-        font-size: $font-size-regular-xxx-large;
-        color: $gray-tint-20;
-        justify-content: center;
-        margin-bottom: 3%;
-      }
+    }
+    &__button {
+      display: flex;
+      font-size: $font-size-regular-xxx-large;
+      color: $gray-tint-20;
+      justify-content: center;
+      margin: 5%;
     }
 
     &__top {
       .users-table {
         width: 50%;
+        margin-left: 23%;
       }
 
       .mat-column-username {
@@ -75,7 +75,6 @@
 
       .mat-column-placement{
         border-right: 1px solid currentColor;
-        border-left: 1px solid currentColor;
         padding-right: 5%;
         text-align: center;
       }
@@ -94,3 +93,4 @@
     }
   }
 }
+

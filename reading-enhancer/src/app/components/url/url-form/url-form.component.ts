@@ -49,7 +49,6 @@ export class UrlFormComponent implements OnInit {
   openModal(id: string) {
     this.modalService.open(id);
     this.addExternalLinksToBeEnhanced();
-    console.log(this.secondEnhancedWebpage);
   }
 
   closeModal(id: string) {
