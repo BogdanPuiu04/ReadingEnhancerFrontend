@@ -18,10 +18,14 @@
 
 <div class="enhancedPage" *ngIf="webpage">
   <app-button (clickBtn)="openModal('webpage-modal')" buttonText="View Page" buttonSize="medium"
-              [disabledValue]="!webpage" [iconPosition]="'right'" ></app-button>
+              [disabledValue]="!webpage" [iconPosition]="'right'"></app-button>
 </div>
 
 <app-modal id="webpage-modal">
+  <div *ngIf="secondEnhancedWebpage!==''">
+    <app-button (clickBtn)="back()" buttonText="Back" buttonSize="medium"></app-button>
+  </div>
   <div id="enhanced-text" [innerHTML]="webpage"></div>
   <app-button (clickBtn)="closeModal('webpage-modal')" buttonText="Close" buttonSize="medium"></app-button>
 </app-modal>
+
