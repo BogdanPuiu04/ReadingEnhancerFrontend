@@ -37,9 +37,9 @@ export class ReadingTestComponent implements OnInit {
   ngOnInit(): void {
     this.getTextBasedQuestion();
     this.browserRefresh = browserRefresh;
-    if (this.browserRefresh) {
-      this.router.navigate(['/begin']);
-    }
+    // if (this.browserRefresh) {
+    //   this.router.navigate(['/begin']);
+    // }
   }
 
   getTextBasedQuestion(): void {
@@ -50,7 +50,7 @@ export class ReadingTestComponent implements OnInit {
   }
 
   stopTimer(): void {
-    if (this.delay > 9) {
+    if (this.delay < 9) {
       this.timer.stop();
       this.isRead = true;
     }

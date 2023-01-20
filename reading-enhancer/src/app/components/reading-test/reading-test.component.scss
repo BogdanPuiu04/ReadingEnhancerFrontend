@@ -1,0 +1,53 @@
+@import '../../../assets/_variables.scss';
+
+.wrapper{
+  display: flex;
+  height: 50%;
+  width: 90%;
+  margin: auto;
+  font-family: $font-family;
+  &__test{
+    width: 80%;
+    height: 100%;
+    margin: 10% 10% 5%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    background-color: #FAF9F6;
+    border-radius: 50px;
+    box-shadow: 10px 10px 50px rgba(31, 29, 29, 0.7);
+    &__time{
+      justify-content: center;
+      margin-left: 43%;
+      margin-top: 2%;
+      font-weight: bold;
+      font-size: $font-size-regular-large;
+    }
+    &__text{
+      margin: 10% ;
+      font-size: $font-size-regular-x-large;
+    }
+  }
+  &__button{
+    justify-content: center;
+    margin-left: 38%;
+    margin-bottom: 2%;
+  }
+  &__quiz{
+    display: flex;
+    flex-direction: row;
+      &__questions{
+        flex-wrap: wrap;
+        width: 30%;
+        //margin-left: 8%;
+
+      }
+  }
+}
+
+#readingSpeed{
+  padding-left: 70%;
+  margin-bottom: 2%;
+  font-weight: bold;
+  font-size: $font-size-regular-x-large;
+}

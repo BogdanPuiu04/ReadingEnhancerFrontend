@@ -1,16 +1,23 @@
-<div id="wrapper" *ngIf="!isRead">
-  <div> Time:
+
+<div class="wrapper">
+<div class="wrapper__test" *ngIf="!isRead">
+  <div class="wrapper__test__time"> Time:
     <cd-timer [autoStart]="true" [startTime]="0" format="ms" (onStop)="setTime()"
               (onTick)="calculateWordsPerMinute()"></cd-timer>
   </div>
-  <div [innerHTML]="text.text"></div>
+  <div class="wrapper__test__text" [innerHTML]="text.text"></div>
+  <div class="wrapper__button">
   <app-button buttonText="I have read everything" buttonSize="medium" (click)="stopTimer()"
               [disabledValue]="delay<10"></app-button>
+  </div>
+  <div id="readingSpeed">
+    {{wpm}} words/minute
+  </div>
 </div>
-<div>
-  {{wpm}} words/minute
-</div>
-<div id="quiz-wrapper" *ngIf="isRead">
+  <div class="wrapper__test" *ngIf="isRead">
+<div class="wrapper__test__questions" *ngIf="isRead">
   <app-quiz [text]="text" [wpm]="wpm"></app-quiz>
 </div>
+  </div>
+  </div>
 
