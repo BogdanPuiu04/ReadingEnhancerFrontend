@@ -36,18 +36,25 @@
       width: 90%;
       height: 90%;
       margin: auto;
+      display: flex;
+      flex-direction: column;
       &__title{
         text-transform: capitalize;
         color: $dark-gray;
         font-size: $font-size-regular-medium-large;
         text-align: center;
-        padding: 5%;
-        margin-top: 5px;
+        padding: 2% 5% 5%;
+        margin-top: 2px;
       }
 
       &__message{
         font-size: $font-size-regular-xxx-large;
         color: $gray-tint-20;
+      }
+
+      &__image{
+        padding-top: 10px;
+        margin-left: 45%;
       }
     }
   }

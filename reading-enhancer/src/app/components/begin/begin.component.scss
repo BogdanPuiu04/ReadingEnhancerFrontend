@@ -41,7 +41,7 @@
         color: $dark-gray;
         font-size: $font-size-regular-medium-large;
         text-align: center;
-        padding: 5%;
+        padding: 2% 5% 5%;
         margin-top: 5px;
       }
 
@@ -49,7 +49,10 @@
         font-size: $font-size-regular-xxx-large;
         color: $gray-tint-20;
       }
-
+      &__image{
+        padding-top: 10px;
+        margin-left: 45%;
+      }
     }
     &__button {
       display: flex;

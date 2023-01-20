@@ -5,12 +5,12 @@
   width: 85%;
 
   &__input{
-    //&__errorMessage{
-    //  margin-top: 10px;
-    //  font-size: $font-size-regular;
-    //  font-family: $font-family;
-    //  color:$orange;
-    //}
+    &__errorMessage{
+      margin-top: 10px;
+      font-size: $font-size-regular;
+      font-family: $font-family;
+      color:$error-red;
+    }
   }
 
   &__actions{
