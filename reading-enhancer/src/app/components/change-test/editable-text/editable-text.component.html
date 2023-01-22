@@ -1,13 +1,13 @@
 <div *ngIf="isEditing" class="editor">
-  <input
-    type="text"
-    name="value"
-    autofocus
-    [(ngModel)]="pendingValue"
-    (keydown.enter)="processChanges()"
-    (keydown.meta.enter)="processChanges()"
-    (keydown.escape)="cancel()"
-  />
+  <textarea (keydown.enter)="processChanges()"
+         (keydown.escape)="cancel()"
+
+         [(ngModel)]="pendingValue"
+         autofocus
+         id="edit"
+         name="value"
+         size="50" type="text"
+  ></textarea>
   <button (click)="processChanges()" id="save-button"
   mat-raised-button color="accent">
     Save

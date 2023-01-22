@@ -1,4 +1,7 @@
 <div class="change-test__wrapper">
+  <div class="change-test__wrapper__image">
+    <img src="assets/logo-01.png" width="150" height="150" alt="Logo">
+  </div>
   <div class="change-test__wrapper__texts">
     <mat-accordion>
       <mat-expansion-panel *ngFor="let text of texts;let i=index" id="text">
@@ -12,10 +15,10 @@
         </mat-expansion-panel-header>
         <div class="change-test__wrapper__texts__edit">
           <app-editable-text [value]="text.text" (valueChange)="saveText( text, $event,i )"></app-editable-text>
-          <input [(ngModel)]="newQuestion" (keyup.enter)="addQuestion(text.id,newQuestion,i)">
+          <input id="newQuestionBtn" [(ngModel)]="newQuestion" (keyup.enter)="addQuestion(text.id,newQuestion,i)" placeholder="Add a new question">
           <app-button buttonText="Add another question" buttonSize="medium"
                       (click)="addQuestion(text.id,newQuestion,i);"></app-button>
-          <button mat-raised-button color="warn" (click)="deleteText(text.id);">Delete text</button>
+          <button mat-raised-button color="warn" id="deleteBtn" (click)="deleteText(text.id);">Delete text</button>
         </div>
         <mat-accordion>
           <mat-expansion-panel *ngFor="let question of text.questionsList">
@@ -27,10 +30,10 @@
               <div class="change-test__wrapper__texts__edit__button">
                 <app-editable-text [value]="question.text"
                                    (valueChange)="saveQuestion( question, $event,i )"></app-editable-text>
-                <input [(ngModel)]="newAnswer" (keyup.enter)="addAnswer(text.id,question.id,newAnswer,i)">
-                <app-button buttonText="Add another answer" buttonSize="medium"
+                <input id="newAnswerInput" [(ngModel)]="newAnswer" (keyup.enter)="addAnswer(text.id,question.id,newAnswer,i)" placeholder="Type your new answer..">
+                <app-button buttonText="Add another answer" buttonSize="medium" id="newAnswerBtn"
                             (click)="addAnswer(text.id,question.id ,newAnswer,i);"></app-button>
-                <button mat-raised-button color="warn" (click)="deleteQuestion(text.id,question.id);">Delete question
+                <button mat-raised-button color="warn"  (click)="deleteQuestion(text.id,question.id);" id="deleteQuestion">Delete question
                 </button>
               </div>
             </div>
@@ -64,7 +67,8 @@
                     [buttonType]="'secondary'" [disabledValue]="!isChanged[i]"></app-button>
       </mat-expansion-panel>
     </mat-accordion>
-    <input [(ngModel)]="newText" (keyup.enter)="addNewText(newText)" placeholder="Add a new text"/>
+    <textarea [(ngModel)]="newText" (keyup.enter)="addNewText(newText)" placeholder="Add a new text" id="newText">
+    </textarea>
     <div *ngIf="newText!==''">
       <app-button [buttonText]="'Add a new text'" buttonSize="medium" (click)="addNewText(newText)"></app-button>
     </div>
