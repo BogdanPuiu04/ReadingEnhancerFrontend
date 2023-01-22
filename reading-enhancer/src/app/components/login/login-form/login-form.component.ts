@@ -13,12 +13,16 @@ import {UserService} from "../../../services/user.service";
 })
 export class LoginFormComponent implements OnInit {
   form!: FormGroup
+  errorMessage!: string
 
   invalidCredentials = false;
   accountValidationMessages = {
     userName: [
       {type: 'required', message: 'Username is required'},
       {type: 'maxlength', message: 'The username cannot be more than 40 characters long'}
+    ],
+    password:[
+      {type: 'required', message: 'Password is required'}
     ]
   };
 
@@ -51,7 +55,6 @@ export class LoginFormComponent implements OnInit {
 
 
   onSubmit() {
-    console.log("here")
     if (this.form.valid) {
       this.login(this.form.value.userName, this.form.value.password);
     }
@@ -89,6 +92,7 @@ export class LoginFormComponent implements OnInit {
       },
       error: () => {
         this.invalidCredentials = true;
+        this.errorMessage = "Invalid credentials";
       }
     })
   }

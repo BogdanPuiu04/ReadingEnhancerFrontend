@@ -30,7 +30,7 @@ export class ResultComponent implements OnInit {
   }
 
   submitResults(): void {
-    if (this.readingSpeed > 0 && !this.isSubmitted) {
+    if (this.readingSpeed > 0 && !this.isSubmitted && (this.highScore> this.results || this.readingSpeed> this.wpm)) {
       let resultsModel: ResultsModel = {
         readingSpeed: this.readingSpeed,
         highScore: this.results

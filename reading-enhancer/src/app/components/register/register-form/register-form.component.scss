@@ -1,39 +1,47 @@
 @import '../../../../assets/_variables.scss';
-.form{
+
+.form {
   display: flex;
   flex-direction: column;
   width: 85%;
 
-  &__input{
-    &__errorMessage{
+  &__input {
+    &__errorMessage {
       margin-top: 10px;
       font-size: $font-size-regular;
       font-family: $font-family;
-      color:$error-red;
+      color: $error-red;
     }
   }
 
-  &__actions{
+  &__actions {
     margin-top: 15px;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
 
-    &__checkbox{
+    &__checkbox {
       margin-top: 15px;
 
-      &__label{
+      &__label {
         padding: 0 5px;
         color: $gray;
       }
     }
 
-    &__button{
+    &__button {
       margin-top: 15px;
       flex-grow: 1;
       display: flex;
       justify-content: flex-end;
+      flex-direction: column;
+
+      &__registerErrorMessage {
+        color: $error-red;
+        margin-top: 2%;
+        font-size: $font-size-regular-x-large;
+      }
     }
 
   }

@@ -22,7 +22,7 @@ export class RegisterFormComponent implements OnInit {
 
 
   form!: FormGroup
-
+  errorMessage!: string;
   invalidCredentials = false;
   accountValidationMessages = {
     userName: [
@@ -147,8 +147,9 @@ export class RegisterFormComponent implements OnInit {
           this.invalidCredentials = true;
         }
       },
-      error: () => {
+      error: (err) => {
         this.invalidCredentials = true;
+        this.errorMessage= err.error.Errors[0];
       }
     })
   }

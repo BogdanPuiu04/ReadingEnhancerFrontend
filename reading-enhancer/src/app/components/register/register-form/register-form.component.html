@@ -16,16 +16,21 @@
            *ngIf="this.form.get('userName')?.hasError(validation.type) && (this.form.get('userName')?.dirty || this.form.get('userName')?.touched)">{{validation.message}}</div>
     </div>
     <app-input [formGroup]='form' inputType="password" label="Password" [controlName]="'password'"></app-input>
-    <app-input [formGroup]='form' inputType="password" label="Confirm Password" [controlName]="'confirmPassword'"></app-input>
+    <app-input [formGroup]='form' inputType="password" label="Confirm Password"
+               [controlName]="'confirmPassword'"></app-input>
     <div *ngFor="let validation of accountValidationMessages.confirmPassword">
       <div class="form__input__errorMessage"
            *ngIf="this.form.get('confirmPassword')?.hasError(validation.type) && (this.form.get('confirmPassword')?.dirty || this.form.get('confirmPassword')?.touched)">{{validation.message}}</div>
     </div>
-    <div class="form__input__errorMessage" *ngIf="invalidCredentials">Invalid Credentials</div>
+<!--    <div class="form__input__errorMessage" *ngIf="invalidCredentials">Invalid Credentials</div>-->
   </div>
   <div class="form__actions">
     <div class="form__actions__button">
-      <app-button [disabledValue]="!form.valid" buttonText="Register" iconPosition="right" buttonSize="large" ></app-button>
+      <app-button [disabledValue]="!form.valid" buttonText="Register" iconPosition="right"
+                  buttonSize="large"></app-button>
+      <div class="form__actions__button__registerErrorMessage">
+        {{errorMessage}}
+      </div>
     </div>
   </div>
 </form>

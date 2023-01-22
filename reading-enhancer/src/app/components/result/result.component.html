@@ -5,20 +5,23 @@
         <img src="assets/logo-01.png" width="70" height="70" alt="Logo">
       </div>
       <div class="results__wrapper__content__info">
-    <p>Accuracy: {{results}}%</p>
-    <p>Words/Minute: {{readingSpeed}}</p>
+        <p>Accuracy: {{results}}%</p>
+        <p>Words/Minute: {{readingSpeed}}</p>
       </div>
-  <div class="results__wrapper__content__submit">
-    <div class="results__wrapper__content__submit__currentHighScore">
-      <p>Your current highscore:<strong> {{this.highScore}}% </strong> and reading speed : <strong> {{this.wpm}} </strong> words/minute</p>
+      <div class="results__wrapper__content__submit">
+        <div class="results__wrapper__content__submit__currentHighScore">
+          <p>Your current highscore:<strong> {{this.highScore}}% </strong> and reading speed :
+            <strong> {{this.wpm}} </strong> words/minute</p>
+        </div>
+        <div class="results__wrapper__content__submit__button">
+          <app-button [buttonText]="'Submit your results'"
+                      [disabledValue]="readingSpeed===0 && !isSubmitted && (this.highScore> results || readingSpeed> this.wpm)"
+                      buttonSize="medium"
+                      buttonType="secondary"
+                      (click)="submitResults()"></app-button>
+        </div>
+      </div>
     </div>
-    <div class="results__wrapper__content__submit__button">
-    <app-button [buttonText]="'Submit your results'" [disabledValue]="readingSpeed===0 && !isSubmitted" buttonSize="medium"
-                buttonType="secondary"
-                (click)="submitResults()"></app-button>
-    </div>
-  </div>
-  </div>
   </div>
 </div>
 

@@ -6,10 +6,15 @@
         *ngIf="this.form.get('userName')?.hasError(validation.type) && (this.form.get('userName')?.dirty || this.form.get('userName')?.touched)">{{validation.message}}</div>
     </div>
     <app-input [formGroup]='form' inputType="password" label="Password" [controlName]="'password'"></app-input>
+    <div *ngFor="let validation of accountValidationMessages.password">
+      <div class="form__input__errorMessage"
+           *ngIf="this.form.get('password')?.hasError(validation.type) && (this.form.get('password')?.dirty || this.form.get('password')?.touched)">{{validation.message}}</div>
+    </div>
   </div>
   <div class="form__actions">
     <div class="form__actions__button">
     <app-button [disabledValue]="!form.valid" buttonText="Login" iconPosition="right" buttonSize="large" [iconLink]="'assets/door-open.svg'"></app-button>
+      <div class="form__actions__button__errorMessage">{{errorMessage}}</div>
     </div>
   </div>
 </form>
