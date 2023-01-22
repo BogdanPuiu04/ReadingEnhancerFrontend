@@ -1,8 +1,53 @@
+@import '../../../assets/_variables.scss';
+
 .results {
-  //background: #5a656b;
-  display: flex;
+  font-family: $font-family;
+  height: 90%;
+  width: 90%;
+  margin: auto;
+  display: inline;
   flex-direction: column;
-  &__submit {
+
+  &__wrapper {
+    width: 80%;
+    height: 80%;
+    margin: 10% 10% 5%;
+    display: flex;
     justify-content: center;
+    flex-direction: row;
+    background-color: #FAF9F6;
+    border-radius: 50px;
+    box-shadow: 10px 10px 50px rgba(31, 29, 29, 0.7);
+
+    &__content {
+      width: 90%;
+      height: 90%;
+      text-transform: capitalize;
+      color: $dark-gray;
+
+      &__image {
+        padding-top: 10px;
+        margin-left: 45%;
+      }
+
+      &__info {
+        justify-content: center;
+        color: green;
+        margin-left: 40%;
+        padding: 2%;
+        font-weight: bold;
+        font-size: $font-size-regular-x-large;
+      }
+
+      &__submit {
+        margin-left: 25%;
+
+        &__button {
+          margin-left: 18%;
+          padding-top: 7px;
+          padding-bottom: 25px;
+        }
+      }
+    }
   }
 }

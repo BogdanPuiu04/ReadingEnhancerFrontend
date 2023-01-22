@@ -8,7 +8,8 @@
   margin: auto;
   display: flex;
   flex-direction: row;
-  background-color: $white;
+  background-color: #FAF9F6;
+
   &__image {
     width: 50%;
     height: 80%;
@@ -24,7 +25,6 @@
     display: flex;
     justify-content: space-around;
     flex-direction: column;
-
     //&__image{
     //  padding-left: 80px;
     //}
