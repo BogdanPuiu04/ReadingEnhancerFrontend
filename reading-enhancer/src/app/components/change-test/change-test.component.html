@@ -17,7 +17,7 @@
           <app-editable-text [value]="text.text" (valueChange)="saveText( text, $event,i )"></app-editable-text>
           <input id="newQuestionBtn" [(ngModel)]="newQuestion" (keyup.enter)="addQuestion(text.id,newQuestion,i)" placeholder="Add a new question">
           <app-button buttonText="Add another question" buttonSize="medium"
-                      (click)="addQuestion(text.id,newQuestion,i);"></app-button>
+                      (click)="addQuestion(text.id,newQuestion,i);" id="questionBtn"></app-button>
           <button mat-raised-button color="warn" id="deleteBtn" (click)="deleteText(text.id);">Delete text</button>
         </div>
         <mat-accordion>
@@ -31,7 +31,7 @@
                 <app-editable-text [value]="question.text"
                                    (valueChange)="saveQuestion( question, $event,i )"></app-editable-text>
                 <input id="newAnswerInput" [(ngModel)]="newAnswer" (keyup.enter)="addAnswer(text.id,question.id,newAnswer,i)" placeholder="Type your new answer..">
-                <app-button buttonText="Add another answer" buttonSize="medium" id="newAnswerBtn"
+                <app-button buttonText="Add another answer" buttonSize="small" id="newAnswerBtn"
                             (click)="addAnswer(text.id,question.id ,newAnswer,i);"></app-button>
                 <button mat-raised-button color="warn"  (click)="deleteQuestion(text.id,question.id);" id="deleteQuestion">Delete question
                 </button>

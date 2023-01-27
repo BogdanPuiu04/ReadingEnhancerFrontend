@@ -78,8 +78,8 @@
 }
 
 #newAnswerBtn{
-  margin-top: 2%;
-  margin-bottom: 2%;
+  display: flex;
+  width: 10%;
 }
 
 #deleteQuestion{
@@ -97,3 +97,9 @@
   margin-top: 2%;
   margin-bottom: 2%;
 }
+
+#questionBtn{
+  width: 12%;
+}
+
+

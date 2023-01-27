@@ -49,10 +49,6 @@ export class ChangeTestComponent implements OnInit {
     return text.split(' ').slice(0, 10).join(' ');
   }
 
-  // TODO: add change submit and question/answer add
-  editText(textId: string): void {
-
-  }
 
   public saveText(text: ReadingText, newName: string, index: number): void {
     this.isChanged[index] = true;
@@ -84,35 +80,39 @@ export class ChangeTestComponent implements OnInit {
   }
 
   addQuestion(textId: string, questionText: string, index: number) {
-    this.texts.forEach(text => {
-      if (text.id == textId) {
-        let q = new Question();
-        q.text = questionText;
-        q.answers = [];
-        q.id = 'not'.repeat(8);
-        text.questionsList.push(q);
-      }
-    });
-    this.isChanged[index] = true;
-    this.newQuestion = '';
+    if (questionText != '') {
+      this.texts.forEach(text => {
+        if (text.id == textId) {
+          let q = new Question();
+          q.text = questionText;
+          q.answers = [];
+          q.id = 'not'.repeat(8);
+          text.questionsList.push(q);
+        }
+      });
+      this.isChanged[index] = true;
+      this.newQuestion = '';
+    }
   }
 
   addAnswer(textId: string, questionId: string, answerText: string, index: number) {
-    this.texts.forEach(text => {
-      if (text.id == textId) {
-        text.questionsList.forEach(question => {
-          if (question.id == questionId) {
-            let a = new Answer();
-            a.text = answerText;
-            a.id = 'not'.repeat(8);
-            a.isCorrect = false;
-            question.answers.push(a);
-          }
-        })
-      }
-    })
-    this.isChanged[index] = true;
-    this.newAnswer = '';
+    if (answerText != '') {
+      this.texts.forEach(text => {
+        if (text.id == textId) {
+          text.questionsList.forEach(question => {
+            if (question.id == questionId) {
+              let a = new Answer();
+              a.text = answerText;
+              a.id = 'not'.repeat(8);
+              a.isCorrect = false;
+              question.answers.push(a);
+            }
+          })
+        }
+      })
+      this.isChanged[index] = true;
+      this.newAnswer = '';
+    }
   }
 
   addNewText(text: string) {

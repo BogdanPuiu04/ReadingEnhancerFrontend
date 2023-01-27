@@ -1,12 +1,12 @@
 <div *ngIf="isEditing" class="editor">
   <textarea (keydown.enter)="processChanges()"
          (keydown.escape)="cancel()"
-
+          class="textarea-inline-control"
          [(ngModel)]="pendingValue"
          autofocus
          id="edit"
          name="value"
-         size="50" type="text"
+         size="50" type="text" cdkTextareaAutosize
   ></textarea>
   <button (click)="processChanges()" id="save-button"
   mat-raised-button color="accent">

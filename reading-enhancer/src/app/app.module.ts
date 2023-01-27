@@ -9,7 +9,6 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {InputComponent} from './shared/input/input.component';
 import {InlineSVGModule} from "ng-inline-svg-2";
 import {ButtonComponent} from './shared/button/button.component';
-import {EnhancedTextService} from "./services/enhanced-text.service";
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {NavMenuComponent} from './components/nav-menu/nav-menu.component';
 import {LoginComponent} from './components/login/login.component';
@@ -35,9 +34,9 @@ import {MatExpansionModule} from "@angular/material/expansion";
 import {MatNativeDateModule} from "@angular/material/core";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import { EditableTextComponent } from './components/change-test/editable-text/editable-text.component';
-import {ReadingTestService} from "./services/reading-test.service";
 import {MatTableModule} from "@angular/material/table";
 import {MatButtonModule} from "@angular/material/button";
+import {TextFieldModule} from "@angular/cdk/text-field";
 
 
 @NgModule({
@@ -62,26 +61,27 @@ import {MatButtonModule} from "@angular/material/button";
     ChangeTestComponent,
     EditableTextComponent,
   ],
-    imports: [
-        BrowserModule,
-        AppRoutingModule,
-        MatFormFieldModule,
-        ReactiveFormsModule,
-        InlineSVGModule,
-        HttpClientModule,
-        CdTimerModule,
-        MatRadioModule,
-        FormsModule,
-        MatExpansionModule,
-        BrowserAnimationsModule,
-        BrowserModule,
-        FormsModule,
-        HttpClientModule,
-        MatNativeDateModule,
-        ReactiveFormsModule,
-        MatTableModule,
-        MatButtonModule,
-    ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    MatFormFieldModule,
+    ReactiveFormsModule,
+    InlineSVGModule,
+    HttpClientModule,
+    CdTimerModule,
+    MatRadioModule,
+    FormsModule,
+    MatExpansionModule,
+    BrowserAnimationsModule,
+    BrowserModule,
+    FormsModule,
+    HttpClientModule,
+    MatNativeDateModule,
+    ReactiveFormsModule,
+    MatTableModule,
+    MatButtonModule,
+    TextFieldModule,
+  ],
   providers: [{
     provide: APP_INITIALIZER,
     useFactory: appInitializer,

@@ -65,7 +65,6 @@ export class LoginFormComponent implements OnInit {
       username,
       password
     };
-
     this.userService.login(user).subscribe({
       next: (res) => {
         if (res.isSuccessful) {
