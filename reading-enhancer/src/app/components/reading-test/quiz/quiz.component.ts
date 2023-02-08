@@ -41,7 +41,6 @@ export class QuizComponent implements OnInit {
     let count = 0;
     let stringKeys = keys.toString().split(',');
     let stringValues = values.toString().split(',');
-    //map selected options
     for (let i = 0; i < keys.length; i++) {
       this.answers.set(stringValues[i], stringKeys[i])
     }

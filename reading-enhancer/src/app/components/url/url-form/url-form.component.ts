@@ -14,7 +14,7 @@ export class UrlFormComponent implements OnInit {
   errorMessage !: string;
   btnClicked!: boolean;
   links: string[] = [];
-  secondEnhancedWebpage!: string;
+  secondEnhancedWebpage: string='';
 
   constructor(private formBuilder: FormBuilder,
               private textService: EnhancedTextService,
@@ -68,7 +68,7 @@ export class UrlFormComponent implements OnInit {
     this.webpage = this.secondEnhancedWebpage;
     this.secondEnhancedWebpage = '';
     this.closeModal('webpage-modal');
-    await this.delay(1000);
+    await this.delay(1);
     this.openModal('webpage-modal');
   }
 
